@@ -19,16 +19,16 @@
 /* Layout: clinic handout — single reading column, exercise cards in a 2-col grid, then a 12-week schedule table with per-week tick boxes */
 :root{
   --bg:#f2f6f6; --surface:#ffffff; --ink:#16252a; --muted:#56696e; --line:#d4dfe0;
-  --accent:#0d7a7e; --accent-soft:#e1f0f0; --target:#e5533a; --fig:#22353a; --ghost:#a3b5b8;
+  --accent:#0d7a7e; --accent-soft:#e1f0f0; --target:#e5533a; --fig:#22353a; --fig-far:#93a8ac; --ghost:#a3b5b8;
   --display:"Bai Jamjuree", "IBM Plex Sans Thai", system-ui, sans-serif;
   --body:"IBM Plex Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0e1618; --surface:#162124; --ink:#e3edef; --muted:#93a7ab; --line:#29393d;
-  --accent:#4cc3c0; --accent-soft:#183336; --target:#ff7a5c; --fig:#d4e3e5; --ghost:#4f656a; color-scheme:dark}}
+  --accent:#4cc3c0; --accent-soft:#183336; --target:#ff7a5c; --fig:#d4e3e5; --fig-far:#6c8287; --ghost:#4f656a; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0e1618; --surface:#162124; --ink:#e3edef; --muted:#93a7ab; --line:#29393d;
-  --accent:#4cc3c0; --accent-soft:#183336; --target:#ff7a5c; --fig:#d4e3e5; --ghost:#4f656a; color-scheme:dark}
+  --accent:#4cc3c0; --accent-soft:#183336; --target:#ff7a5c; --fig:#d4e3e5; --fig-far:#6c8287; --ghost:#4f656a; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:32px 64px}
@@ -90,6 +90,19 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
 @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.anim svg{width:100%;height:auto;background:var(--accent-soft);border-radius:8px;display:block}
+.wide .anim{width:100%;max-width:460px;align-self:center}
+.cap{display:flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:500;line-height:1.4}
+.pp{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.pp:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lb{stroke:var(--fig);fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lf{stroke:var(--fig-far);fill:none;stroke-linecap:round;stroke-linejoin:round}
+.shd{stroke:var(--fig);opacity:.16;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hdo{fill:var(--fig);stroke:var(--accent-soft);stroke-width:2.5}
+.eye{fill:var(--accent-soft)}
+.dash{fill:none;stroke:var(--ghost);stroke-width:2;stroke-dasharray:3 4}
+.mat{fill:var(--surface);stroke:var(--line)}
+.tx{fill:var(--muted);font:600 10px var(--body)}
 /* figure styles */
 .f{stroke:var(--fig);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .hd{fill:var(--fig)}
@@ -124,7 +137,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   <div class="legend">
     <span><i class="sw"></i>กล้ามเนื้อที่ทำงานหรือถูกยืด</span>
     <span><i class="sw arr"></i>ทิศทางการเคลื่อนไหว</span>
-    <span><i class="sw gh"></i>ท่าเริ่มต้น / ท่าที่ไม่ถูกต้อง</span>
+    <span><i class="sw gh"></i>ตำแหน่งเริ่มต้น</span><span>แตะปุ่มใต้ภาพเพื่อหยุดหรือเล่น</span>
   </div>
 </header>
 
@@ -135,19 +148,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   </div>
   <div class="grid">
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="ยืนหลังชิดผนัง ส้นเท้า ก้น สะบัก และท้ายทอยแตะผนัง">
-        <rect class="prop" x="40" y="10" width="14" height="140"/>
-        <line class="floor" x1="20" y1="150" x2="200" y2="150"/>
-        <path class="f" d="M64 146 L64 100 M64 100 L66 60 M66 62 L70 46"/>
-        <path class="f" d="M64 100 L72 146"/>
-        <path class="f" d="M66 66 L70 98"/>
-        <circle class="hd" cx="72" cy="34" r="13"/>
-        <circle class="t" cx="56" cy="30" r="5"/><circle class="t" cx="56" cy="64" r="5"/><circle class="t" cx="56" cy="100" r="5"/><circle class="t" cx="56" cy="144" r="5"/>
-        <text class="lbl" x="96" y="34">ท้ายทอย</text>
-        <text class="lbl" x="96" y="68">สะบัก</text>
-        <text class="lbl" x="96" y="104">ก้น</text>
-        <text class="lbl" x="96" y="140">ส้นเท้า</text>
-      </svg>
+      <div class="anim" data-ex="wall"></div>
       <h3>Wall test <span class="en">เช็กท่าทาง</span></h3>
       <ol>
         <li>ยืนหลังชิดผนัง ให้ส้นเท้า ก้น และสะบักแตะผนัง</li>
@@ -178,17 +179,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   <div class="grid">
 
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="ท่าดึงคางเข้า มองจากด้านข้าง">
-        <line class="floor" x1="20" y1="150" x2="200" y2="150"/>
-        <circle class="gh" cx="128" cy="50" r="17"/>
-        <path class="g" d="M104 88 L120 64"/>
-        <path class="f" d="M104 150 L104 88 L106 70"/>
-        <path class="f" d="M104 96 L108 140"/>
-        <circle class="hd" cx="108" cy="52" r="17"/>
-        <ellipse class="t" cx="114" cy="74" rx="6" ry="9"/>
-        <line class="a" x1="160" y1="52" x2="132" y2="52" marker-end="url(#ar)"/>
-        <text class="lbl" x="138" y="40">ดึงคางเข้า</text>
-      </svg>
+      <div class="anim" data-ex="chin"></div>
       <span class="tag">ยืด / จัดท่า</span>
       <h3>Chin tuck <span class="en">ดึงคางเข้า</span></h3>
       <ol>
@@ -200,18 +191,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     </div>
 
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="ยืดอกที่วงกบประตู มองจากด้านข้าง">
-        <rect class="prop" x="62" y="10" width="12" height="140"/>
-        <line class="floor" x1="20" y1="150" x2="200" y2="150"/>
-        <path class="f" d="M108 96 L104 56"/>
-        <path class="f" d="M104 58 L80 60 L80 32"/>
-        <path class="f" d="M108 96 L128 148 M108 96 L94 148"/>
-        <circle class="hd" cx="112" cy="40" r="12"/>
-        <ellipse class="t" cx="112" cy="66" rx="9" ry="10"/>
-        <line class="a" x1="130" y1="78" x2="160" y2="78" marker-end="url(#ar)"/>
-        <text class="lbl" x="134" y="70">ก้าวไปข้างหน้า</text>
-        <text class="lbl" x="80" y="24">ข้อศอกระดับไหล่</text>
-      </svg>
+      <div class="anim" data-ex="door"></div>
       <span class="tag">ยืด</span>
       <h3>Doorway stretch <span class="en">ยืดอกที่วงกบประตู</span></h3>
       <ol>
@@ -223,17 +203,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     </div>
 
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="นอนหงายบนโฟมโรลเลอร์ใต้หลังส่วนบน แอ่นหลังลง">
-        <line class="floor" x1="10" y1="146" x2="210" y2="146"/>
-        <circle class="prop" cx="96" cy="128" r="17"/>
-        <path class="f" d="M148 138 Q112 112 80 114"/>
-        <path class="f" d="M148 138 L172 106 L188 142"/>
-        <path class="f" d="M90 112 L80 86 L62 104"/>
-        <circle class="hd" cx="58" cy="118" r="12"/>
-        <ellipse class="t" cx="98" cy="108" rx="14" ry="6"/>
-        <path class="a" d="M64 82 Q50 96 52 128" marker-end="url(#ar)"/>
-        <text class="lbl" x="110" y="80">โรลเลอร์ใต้สะบัก</text>
-      </svg>
+      <div class="anim" data-ex="roll"></div>
       <span class="tag">ยืด</span>
       <h3>Thoracic extension <span class="en">แอ่นหลังบนโฟมโรลเลอร์</span></h3>
       <ol>
@@ -245,15 +215,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     </div>
 
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="ยืดคอด้านข้าง เอียงหูลงหาไหล่">
-        <path class="f" d="M110 150 L110 86 M84 90 L136 90 M84 90 L80 146 M136 90 L140 146"/>
-        <path class="f" d="M110 86 L102 70"/>
-        <circle class="hd" cx="94" cy="56" r="15"/>
-        <path class="f" d="M84 90 L70 70 L82 46"/>
-        <ellipse class="t" cx="124" cy="80" rx="12" ry="6" transform="rotate(25 124 80)"/>
-        <path class="a" d="M120 34 Q100 26 82 32" marker-end="url(#ar)"/>
-        <text class="lbl" x="146" y="80">ตึงตรงนี้</text>
-      </svg>
+      <div class="anim" data-ex="neck"></div>
       <span class="tag">ยืด</span>
       <h3>Upper trap stretch <span class="en">ยืดคอด้านข้าง</span></h3>
       <ol>
@@ -274,17 +236,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   <div class="grid">
 
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="Wall angel ยืนหลังชิดผนัง เลื่อนแขนจากรูป W ขึ้นเป็นรูป Y">
-        <rect class="prop" x="40" y="8" width="140" height="146" rx="4"/>
-        <path class="g" d="M98 74 L66 22 M122 74 L154 22"/>
-        <path class="f" d="M110 150 L110 74 M98 76 L122 76"/>
-        <path class="f" d="M98 76 L72 92 L66 54 M122 76 L148 92 L154 54"/>
-        <circle class="hd" cx="110" cy="56" r="13"/>
-        <ellipse class="t" cx="110" cy="92" rx="12" ry="8"/>
-        <line class="a" x1="60" y1="70" x2="56" y2="34" marker-end="url(#ar)"/>
-        <line class="a" x1="160" y1="70" x2="164" y2="34" marker-end="url(#ar)"/>
-        <text class="lbl" x="128" y="140">W → Y</text>
-      </svg>
+      <div class="anim" data-ex="angel"></div>
       <span class="tag str">สร้างกล้ามเนื้อ</span>
       <h3>Wall angel <span class="en">เลื่อนแขนบนผนัง</span></h3>
       <ol>
@@ -296,29 +248,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     </div>
 
     <div class="card wide">
-      <svg viewBox="0 0 330 160" role="img" aria-label="นอนคว่ำมองจากด้านบน ยกแขนเป็นรูป Y T และ W">
-        <g>
-          <circle class="hd" cx="55" cy="30" r="10"/>
-          <path class="f" d="M41 50 L69 50 M55 44 L55 100 M55 100 L48 146 M55 100 L62 146"/>
-          <path class="f" d="M41 50 L18 14 M69 50 L92 14"/>
-          <ellipse class="t" cx="55" cy="66" rx="12" ry="12"/>
-          <text class="lbl big" x="49" y="124">Y</text>
-        </g>
-        <g>
-          <circle class="hd" cx="165" cy="30" r="10"/>
-          <path class="f" d="M151 50 L179 50 M165 44 L165 100 M165 100 L158 146 M165 100 L172 146"/>
-          <path class="f" d="M151 50 L112 50 M179 50 L218 50"/>
-          <ellipse class="t" cx="165" cy="60" rx="14" ry="9"/>
-          <text class="lbl big" x="159" y="124">T</text>
-        </g>
-        <g>
-          <circle class="hd" cx="275" cy="30" r="10"/>
-          <path class="f" d="M261 50 L289 50 M275 44 L275 100 M275 100 L268 146 M275 100 L282 146"/>
-          <path class="f" d="M261 50 L240 72 L236 40 M289 50 L310 72 L314 40"/>
-          <ellipse class="t" cx="275" cy="64" rx="12" ry="11"/>
-          <text class="lbl big" x="268" y="124">W</text>
-        </g>
-      </svg>
+      <div class="anim" data-ex="ytw"></div>
       <span class="tag str">สร้างกล้ามเนื้อ</span>
       <h3>Prone Y-T-W <span class="en">นอนคว่ำยกแขน 3 แบบ (ท่าเดียวกับในคลิป)</span></h3>
       <ol>
@@ -330,17 +260,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     </div>
 
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="ดึงยางยืดออกด้านข้าง มองจากด้านหน้า">
-        <path class="f" d="M110 150 L110 80 M90 84 L130 84"/>
-        <circle class="hd" cx="110" cy="62" r="13"/>
-        <path class="g" d="M90 84 L100 90 M130 84 L120 90"/>
-        <path class="f" d="M90 84 L40 86 M130 84 L180 86"/>
-        <path class="band" d="M40 86 Q110 96 180 86"/>
-        <circle class="t" cx="90" cy="88" r="7"/><circle class="t" cx="130" cy="88" r="7"/>
-        <line class="a" x1="62" y1="70" x2="34" y2="70" marker-end="url(#ar)"/>
-        <line class="a" x1="158" y1="70" x2="186" y2="70" marker-end="url(#ar)"/>
-        <text class="lbl" x="66" y="126">บีบสะบักเข้าหากัน</text>
-      </svg>
+      <div class="anim" data-ex="pull"></div>
       <span class="tag str">สร้างกล้ามเนื้อ</span>
       <h3>Band pull-apart <span class="en">ดึงยางยืดออกด้านข้าง</span></h3>
       <ol>
@@ -352,18 +272,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     </div>
 
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="ยืนดึงยางยืดเข้าหาตัว มองจากด้านข้าง">
-        <rect class="prop" x="16" y="20" width="10" height="130"/>
-        <line class="floor" x1="10" y1="150" x2="210" y2="150"/>
-        <path class="f" d="M130 96 L126 52"/>
-        <path class="f" d="M130 96 L116 148 M130 96 L144 148"/>
-        <circle class="hd" cx="120" cy="36" r="12"/>
-        <path class="f" d="M126 56 L150 76 L118 80"/>
-        <path class="band" d="M26 74 L118 80"/>
-        <ellipse class="t" cx="134" cy="64" rx="7" ry="11"/>
-        <line class="a" x1="160" y1="96" x2="180" y2="96" marker-end="url(#ar)"/>
-        <text class="lbl" x="150" y="114">ศอกไปด้านหลัง</text>
-      </svg>
+      <div class="anim" data-ex="row"></div>
       <span class="tag str">สร้างกล้ามเนื้อ</span>
       <h3>Band row <span class="en">ดึงยางเข้าหาตัว</span></h3>
       <ol>
@@ -375,18 +284,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     </div>
 
     <div class="card">
-      <svg viewBox="0 0 220 160" role="img" aria-label="Face pull ดึงยางเข้าหาหน้า ศอกสูง">
-        <rect class="prop" x="16" y="20" width="10" height="130"/>
-        <line class="floor" x1="10" y1="150" x2="210" y2="150"/>
-        <path class="f" d="M134 98 L130 56"/>
-        <path class="f" d="M134 98 L120 148 M134 98 L148 148"/>
-        <circle class="hd" cx="124" cy="40" r="12"/>
-        <path class="f" d="M130 58 L152 50 L118 34"/>
-        <path class="band" d="M26 40 L118 34"/>
-        <ellipse class="t" cx="138" cy="60" rx="7" ry="9"/>
-        <path class="a" d="M162 64 Q172 46 160 30" marker-end="url(#ar)"/>
-        <text class="lbl" x="150" y="122">ศอกสูง หมุนมือขึ้น</text>
-      </svg>
+      <div class="anim" data-ex="face"></div>
       <span class="tag str">สร้างกล้ามเนื้อ</span>
       <h3>Face pull <span class="en">ดึงยางเข้าหาหน้า (เริ่มสัปดาห์ 9)</span></h3>
       <ol>
@@ -504,5 +402,183 @@ function upd(){
 host.addEventListener("change", e=>{ if(e.target.type==="checkbox"){ state[e.target.id]=e.target.checked; save(); upd(); }});
 upd();
 </script>
+<script>
+(function(){
+const P=p=>p[0].toFixed(1)+','+p[1].toFixed(1);
+const M=([x,y])=>[240-x,y];
+const pl=(pts,w,c)=>`<polyline points="${pts.map(P).join(' ')}" class="${c}" stroke-width="${w.toFixed(1)}"/>`;
+const L=(a,b,t)=>Array.isArray(a)?a.map((v,i)=>L(v,b[i],t)):(typeof a==='number'?a+(b-a)*t:(t<.5?a:b));
+const lerp=(a,b,t)=>{const o={};for(const k in a)o[k]=(k in b)?L(a[k],b[k],t):a[k];return o};
+const ease=t=>.5-.5*Math.cos(Math.PI*t);
+const glow=g=>g?`<ellipse class="t" cx="${g[0].toFixed(1)}" cy="${g[1].toFixed(1)}" rx="${g[2]}" ry="${g[3]}" style="opacity:${(.1+.75*g[4]).toFixed(2)}"/>`:'';
+function head(c,r,face){
+  let o=`<circle class="hd" cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r}"/>`;
+  if(face==='F'){o+=`<circle class="eye" cx="${(c[0]-r*.35).toFixed(1)}" cy="${(c[1]-r*.05).toFixed(1)}" r="${(r*.13).toFixed(1)}"/><circle class="eye" cx="${(c[0]+r*.35).toFixed(1)}" cy="${(c[1]-r*.05).toFixed(1)}" r="${(r*.13).toFixed(1)}"/>`}
+  else if(Array.isArray(face)){o+=`<circle class="eye" cx="${(c[0]+face[0]*r*.5).toFixed(1)}" cy="${(c[1]+face[1]*r*.5-r*.12).toFixed(1)}" r="${(r*.14).toFixed(1)}"/>`}
+  return o;
+}
+// generic body: back limbs, torso, shoulders, neck+head, glow, front limbs
+function body(p,s){
+  let o='';
+  (p.bl||[]).forEach(l=>o+=pl(l,9*s,'lf'));
+  const [h,m,n]=p.torso;
+  o+=`<path d="M${P(h)} Q${P(m)} ${P(n)}" class="lb" stroke-width="${15*s}"/>`;
+  if(p.sh)o+=pl(p.sh,12*s,'lb');
+  o+=pl([n,p.head],8*s,'lb');
+  o+=head(p.head,11*s,p.face);
+  o+=glow(p.glow);
+  (p.fl||[]).forEach(l=>o+=pl(l,9*s,'lb'));
+  return o;
+}
+const floor=y=>`<line class="floor" x1="8" y1="${y}" x2="232" y2="${y}"/>`;
+const side=(o)=>Object.assign({bl:[],fl:[]},o);
+
+const EX={
+wall:{s:1,
+  poses:{
+    bad:side({torso:[[76,108],[96,84],[92,62]],head:[108,50],face:[1,0],
+      bl:[[[76,108],[72,138],[71,166]],[[88,68],[92,94],[96,118]]],
+      fl:[[[76,108],[78,138],[78,166]],[[90,68],[94,95],[98,119]]],ok:0}),
+    good:side({torso:[[71,108],[70,84],[72,60]],head:[75,44],face:[1,0],
+      bl:[[[71,108],[70,138],[70,166]],[[71,66],[71,92],[73,115]]],
+      fl:[[[71,108],[74,138],[74,166]],[[73,66],[74,92],[76,116]]],ok:1})},
+  back:p=>`<rect class="prop" x="48" y="6" width="12" height="162"/>`+floor(168),
+  front:p=>{const a=p.ok.toFixed(2);let o='';[[44,'ท้ายทอย'],[70,'สะบัก'],[106,'ก้น'],[164,'ส้นเท้า']].forEach(([y,t])=>{o+=`<circle class="t" cx="61" cy="${y}" r="4.5" style="opacity:${a}"/><text class="tx" x="150" y="${y+4}" style="opacity:${a}">● ${t}</text>`});return o},
+  seq:[['bad',1.2,1.4,'ยืนแบบปกติที่ทำอยู่ทุกวัน'],['good',1.6,2.4,'ชิดผนัง: ส้นเท้า ก้น สะบัก ท้ายทอย แตะผนังได้ไหม']],rest:1},
+chin:{s:1.6,
+  poses:{
+    out:side({torso:[[104,200],[104,150],[106,106]],head:[134,64],face:[1,0],fl:[[[108,112],[110,150],[112,190]]],glow:[122,94,6,10,0],k:0}),
+    in:side({torso:[[104,200],[104,150],[106,106]],head:[114,66],face:[1,0],fl:[[[108,112],[110,150],[112,190]]],glow:[116,94,6,10,1],k:1})},
+  back:p=>`<circle class="dash" cx="134" cy="64" r="17.6" style="opacity:${p.k.toFixed(2)}"/>`,
+  seq:[['out',1,1,'ศีรษะยื่นไปข้างหน้า (ท่าเริ่ม)'],['in',1.1,2.6,'เลื่อนศีรษะไปข้างหลังตรงๆ ค้าง 5 วิ'],['out',1,.2,'คลาย']],rest:1},
+door:{s:1,
+  poses:{
+    a:side({torso:[[98,110],[98,86],[98,64]],head:[104,48],face:[1,0],
+      bl:[[[98,110],[96,140],[96,166]],[[96,68],[76,66],[77,38]]],
+      fl:[[[98,110],[100,140],[101,166]],[[98,68],[78,68],[79,40]]],glow:[105,78,8,9,0]}),
+    b:side({torso:[[118,112],[118,88],[116,66]],head:[122,50],face:[1,0],
+      bl:[[[118,112],[108,140],[98,166]],[[114,70],[80,66],[78,38]]],
+      fl:[[[118,112],[134,138],[140,166]],[[116,70],[82,68],[80,40]]],glow:[124,80,9,10,1]})},
+  back:p=>`<rect class="prop" x="64" y="10" width="11" height="158"/>`+floor(168),
+  seq:[['a',1.2,.9,'วางแขนบนวงกบ ศอกสูงระดับไหล่'],['b',1.6,2.6,'ก้าวไปข้างหน้า ตึงที่อก ค้าง 30 วิ']],rest:1},
+roll:{s:1,
+  poses:{
+    up:side({torso:[[160,160],[118,136],[84,134]],head:[68,126],face:[0,-1],
+      bl:[[[160,160],[186,128],[204,166]],[[84,134],[82,108],[66,118]]],
+      fl:[[[160,160],[182,126],[198,166]],[[88,134],[86,110],[70,120]]],glow:[116,140,15,5,0]}),
+    down:side({torso:[[160,160],[116,138],[86,150]],head:[70,154],face:[0,-1],
+      bl:[[[160,160],[186,128],[204,166]],[[86,150],[78,128],[64,144]]],
+      fl:[[[160,160],[182,126],[198,166]],[[90,150],[82,130],[68,146]]],glow:[116,140,15,5,1]})},
+  back:p=>floor(168)+`<circle class="prop" cx="114" cy="155" r="13"/><circle class="dash" cx="114" cy="155" r="7"/>`,
+  seq:[['up',1.4,.8,'มือประคองศีรษะ ก้นวางบนพื้น'],['down',1.6,1.4,'หายใจออก แอ่นหลังลงข้ามโรลเลอร์']],rest:1},
+neck:{s:1.2,
+  poses:{
+    a:{torso:[[120,190],[120,140],[120,88]],head:[120,58],face:'F',sh:[[96,92],[144,92]],
+      fl:[[[96,92],[90,132],[90,172]],[[144,92],[150,132],[150,172]]],glow:[136,86,11,6,0]},
+    b:{torso:[[120,190],[120,140],[120,88]],head:[101,66],face:'F',sh:[[96,92],[144,92]],
+      fl:[[[96,92],[76,70],[92,46]],[[144,92],[150,132],[150,172]]],glow:[136,86,11,6,1]}},
+  back:p=>'',
+  seq:[['a',1.4,.9,'นั่งตัวตรง ไหล่ผ่อนลง'],['b',1.8,2.6,'เอียงหูลงหาไหล่ มือกดเบาๆ ค้าง 30 วิ']],rest:1},
+angel:{s:1,
+  poses:{
+    w:{torso:[[120,138],[120,110],[120,80]],head:[120,60],face:'F',sh:[[102,84],[138,84]],
+      fl:[[[114,136],[110,170]],[[126,136],[130,170]],[[102,84],[80,102],[76,64]],[[138,84],[160,102],[164,64]]],glow:[120,100,12,8,1]},
+    y:{torso:[[120,138],[120,110],[120,80]],head:[120,60],face:'F',sh:[[102,84],[138,84]],
+      fl:[[[114,136],[110,170]],[[126,136],[130,170]],[[102,84],[86,52],[70,22]],[[138,84],[154,52],[170,22]]],glow:[120,100,12,8,.2]}},
+  back:p=>`<rect class="prop" x="34" y="6" width="172" height="168" rx="4"/>`,
+  seq:[['w',2,.9,'แขนรูป W หลังมือและศอกแตะผนัง'],['y',2,.6,'เลื่อนขึ้นเป็นรูป Y ช้าๆ แขนไม่หลุดผนัง']],rest:0},
+ytw:{s:1,
+  poses:{
+    Y0:{arm:[[102,54],[86,32],[72,12]],lift:0},Y1:{arm:[[102,54],[86,32],[72,12]],lift:1},
+    T0:{arm:[[102,54],[80,55],[56,56]],lift:0},T1:{arm:[[102,54],[80,55],[56,56]],lift:1},
+    W0:{arm:[[102,54],[84,78],[76,50]],lift:0},W1:{arm:[[102,54],[84,78],[76,50]],lift:1}},
+  draw:p=>{let o='';
+    o+=pl([[114,116],[110,172]],11,'lb')+pl([[126,116],[130,172]],11,'lb');
+    o+=pl([[120,56],[120,114]],28,'lb')+pl([[102,54],[138,54]],14,'lb');
+    o+=glow([120,72,13,11,p.lift]);
+    const A=p.arm,B=A.map(M),off=2+p.lift*9,w=9+p.lift*2.5;
+    [A,B].forEach(a=>o+=pl(a.map(([x,y])=>[x+off*.5,y+off]),w,'shd'));
+    [A,B].forEach(a=>o+=pl(a,w,'lb'));
+    o+=`<circle class="hd" cx="120" cy="32" r="12"/>`;return o},
+  back:p=>`<rect class="mat" x="44" y="4" width="152" height="172" rx="8"/><text class="tx" x="150" y="170">มองจากด้านบน</text>`,
+  seq:[['Y0',1,.5,'Y: แขนเฉียงขึ้น หัวแม่มือชี้ฟ้า'],['Y1',.8,1.3,'Y: บีบสะบัก ยกแขนขึ้น ค้าง 2 วิ'],['Y0',.8,.3,'Y: วางลง'],
+       ['T0',1,.4,'T: กางแขนออกข้างลำตัว'],['T1',.8,1.3,'T: ยกขึ้น ค้าง 2 วิ'],['T0',.8,.3,'T: วางลง'],
+       ['W0',1,.4,'W: งอศอก ชี้ศอกลงหาสะเอว'],['W1',.8,1.3,'W: ยกขึ้น ค้าง 2 วิ'],['W0',.8,.3,'W: วางลง']],rest:1},
+pull:{s:1,
+  poses:{
+    a:{arm:[[98,108],[103,78],[108,46]],sag:16,sc:[107,121],g:0},
+    b:{arm:[[98,108],[72,100],[44,94]],sag:0,sc:[113,121],g:1}},
+  draw:p=>{let o='';const A=p.arm,B=A.map(M),hl=A[2],hr=B[2];
+    o+=`<path class="band" d="M${P(hl)} Q120,${(hl[1]+p.sag).toFixed(1)} ${P(hr)}"/>`;
+    o+=pl(A,10,'lb')+pl(B,10,'lb');
+    o+=`<ellipse class="hd" cx="120" cy="112" rx="30" ry="15"/>`;
+    const s2=M(p.sc);[p.sc,s2].forEach(c=>o+=`<ellipse class="t" cx="${c[0].toFixed(1)}" cy="${c[1]}" rx="5" ry="7" style="opacity:${(.25+.7*p.g).toFixed(2)}"/>`);
+    o+=`<circle class="hdo" cx="120" cy="106" r="13"/><circle class="eye" cx="120" cy="96" r="2.4"/>`;return o},
+  back:p=>`<text class="tx" x="150" y="170">มองจากด้านบน</text>`,
+  seq:[['a',1.6,.7,'แขนเหยียดตรงหน้า ระดับอก'],['b',1.2,1.1,'ดึงยางออกข้าง บีบสะบักเข้าหากัน']],rest:1},
+row:{s:1,
+  poses:{
+    a:side({torso:[[134,112],[134,88],[132,62]],head:[126,46],face:[-1,0],
+      bl:[[[134,112],[140,140],[144,166]],[[134,68],[108,72],[82,76]]],
+      fl:[[[134,112],[130,140],[126,166]],[[132,68],[106,74],[80,78]]],glow:[142,76,6,11,0]}),
+    b:side({torso:[[134,112],[134,88],[132,62]],head:[126,46],face:[-1,0],
+      bl:[[[134,112],[140,140],[144,166]],[[134,68],[158,82],[130,88]]],
+      fl:[[[134,112],[130,140],[126,166]],[[132,68],[156,84],[128,90]]],glow:[142,76,6,11,1]})},
+  back:p=>{const h=p.fl[1][2];return `<rect class="prop" x="16" y="18" width="10" height="150"/>`+floor(168)+`<line class="band" x1="26" y1="80" x2="${h[0].toFixed(1)}" y2="${h[1].toFixed(1)}"/>`},
+  seq:[['a',1.6,.6,'แขนเหยียด ยางตึงเล็กน้อย'],['b',1,1.3,'ดึงศอกไปข้างหลัง บีบสะบัก ค้าง 1–2 วิ']],rest:1},
+face:{s:1,
+  poses:{
+    a:side({torso:[[134,112],[134,88],[132,62]],head:[126,46],face:[-1,0],
+      bl:[[[134,112],[140,140],[144,166]],[[134,68],[108,58],[82,48]]],
+      fl:[[[134,112],[130,140],[126,166]],[[132,68],[106,58],[80,48]]],glow:[142,72,6,10,0]}),
+    b:side({torso:[[134,112],[134,88],[132,62]],head:[126,46],face:[-1,0],
+      bl:[[[134,112],[140,140],[144,166]],[[134,68],[158,56],[140,32]]],
+      fl:[[[134,112],[130,140],[126,166]],[[132,68],[156,58],[138,34]]],glow:[142,72,6,10,1]})},
+  back:p=>{const h=p.fl[1][2];return `<rect class="prop" x="16" y="18" width="10" height="150"/>`+floor(168)+`<line class="band" x1="26" y1="40" x2="${h[0].toFixed(1)}" y2="${h[1].toFixed(1)}"/>`},
+  seq:[['a',1.6,.6,'แขนเหยียด จับยางสูงกว่าศีรษะ'],['b',1.1,1.4,'ดึงเข้าหาหน้า ศอกสูง หมุนมือขึ้น ค้าง 2 วิ']],rest:1}
+};
+
+function at(ex,t){
+  const q=ex.seq;let acc=0;
+  for(let i=0;i<q.length;i++){
+    const [name,mv,hd,lab]=q[i],prev=q[(i-1+q.length)%q.length][0];
+    if(t<acc+mv)return{p:lerp(ex.poses[prev],ex.poses[name],ease((t-acc)/mv)),lab,i};
+    acc+=mv;
+    if(t<acc+hd)return{p:ex.poses[name],lab,i};
+    acc+=hd;
+  }
+  const l=q.length-1;return{p:ex.poses[q[l][0]],lab:q[l][3],i:l};
+}
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PLAY='<svg viewBox="0 0 20 20" width="14" height="14"><path d="M6 4l10 6-10 6z" fill="currentColor"/></svg>';
+const PAUSE='<svg viewBox="0 0 20 20" width="14" height="14"><rect x="5" y="4" width="3.5" height="12" fill="currentColor"/><rect x="11.5" y="4" width="3.5" height="12" fill="currentColor"/></svg>';
+const insts=[];
+document.querySelectorAll('.anim[data-ex]').forEach(el=>{
+  const ex=EX[el.dataset.ex];if(!ex)return;
+  ex.total=ex.seq.reduce((s,x)=>s+x[1]+x[2],0);
+  el.innerHTML=`<svg viewBox="0 0 240 180" role="img" aria-label="ภาพเคลื่อนไหวแสดงท่า"><g></g></svg><div class="cap"><button type="button" class="pp"></button><span class="lab" aria-live="off"></span></div>`;
+  const inst={el,ex,g:el.querySelector('g'),lab:el.querySelector('.lab'),btn:el.querySelector('.pp'),playing:!reduce,vis:false,t:0,last:null,li:-1};
+  if(reduce){let a=0;for(let i=0;i<ex.rest;i++)a+=ex.seq[i][1]+ex.seq[i][2];inst.t=a+ex.seq[ex.rest][1]+.01;}
+  inst.btn.addEventListener('click',()=>{inst.playing=!inst.playing;inst.last=null;setBtn(inst)});
+  setBtn(inst);draw(inst);insts.push(inst);
+});
+function setBtn(i){i.btn.innerHTML=i.playing?PAUSE:PLAY;i.btn.setAttribute('aria-label',i.playing?'หยุดภาพ':'เล่นภาพ')}
+function draw(i){
+  const ex=i.ex,r=at(ex,i.t%ex.total),p=r.p;
+  i.g.innerHTML=(ex.back?ex.back(p):'')+(ex.draw?ex.draw(p):body(p,ex.s))+(ex.front?ex.front(p):'');
+  if(r.i!==i.li){i.li=r.i;i.lab.textContent=r.lab}
+}
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{const i=insts.find(x=>x.el===e.target);if(i){i.vis=e.isIntersecting;i.last=null}}),{rootMargin:'80px'});
+  insts.forEach(i=>io.observe(i.el));
+}else insts.forEach(i=>i.vis=true);
+function loop(now){
+  insts.forEach(i=>{if(!i.playing||!i.vis)return;if(i.last!=null)i.t+=Math.min(.1,(now-i.last)/1000);i.last=now;draw(i)});
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+})();
+</script>
+
 </body>
 </html>
