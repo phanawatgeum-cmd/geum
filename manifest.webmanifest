@@ -1,0 +1,13 @@
+{
+  "name": "แผนแก้หลังค่อม 12 สัปดาห์",
+  "short_name": "หลังตรง",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d7a7e",
+  "theme_color": "#0d7a7e",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
