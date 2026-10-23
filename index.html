@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>แผนแก้หลังค่อม 12 สัปดาห์</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+<style>
+/* Layout: clinic handout — single reading column, exercise cards in a 2-col grid, then a 12-week schedule table with per-week tick boxes */
+:root{
+  --bg:#f2f6f6; --surface:#ffffff; --ink:#16252a; --muted:#56696e; --line:#d4dfe0;
+  --accent:#0d7a7e; --accent-soft:#e1f0f0; --target:#e5533a; --fig:#22353a; --ghost:#a3b5b8;
+  --display:"Bai Jamjuree", "IBM Plex Sans Thai", system-ui, sans-serif;
+  --body:"IBM Plex Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1618; --surface:#162124; --ink:#e3edef; --muted:#93a7ab; --line:#29393d;
+  --accent:#4cc3c0; --accent-soft:#183336; --target:#ff7a5c; --fig:#d4e3e5; --ghost:#4f656a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1618; --surface:#162124; --ink:#e3edef; --muted:#93a7ab; --line:#29393d;
+  --accent:#4cc3c0; --accent-soft:#183336; --target:#ff7a5c; --fig:#d4e3e5; --ghost:#4f656a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:32px 64px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+h1,h2,h3{font-family:var(--display);line-height:1.25;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,5vw,40px)}
+h2{font-size:24px}
+h3{font-size:18px}
+p{margin:0}
+.lede{color:var(--muted);max-width:62ch}
+header{display:flex;flex-direction:column;gap:12px}
+.eyebrow{font-size:13px;letter-spacing:.06em;color:var(--accent);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border-radius:50%;background:var(--target);opacity:.7}
+.sw.arr{background:var(--accent);opacity:1;border-radius:2px;height:4px;width:18px}
+.sw.gh{background:none;border:2px dashed var(--ghost);opacity:1}
+section{display:flex;flex-direction:column;gap:20px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+.sec-head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card svg{width:100%;height:auto;background:var(--accent-soft);border-radius:8px;display:block}
+.tag{align-self:flex-start;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.tag.str{background:color-mix(in srgb,var(--target) 16%,transparent);color:var(--target)}
+.en{color:var(--muted);font-size:14px;font-weight:500;font-family:var(--body)}
+.card ol{margin:0;padding-left:20px;font-size:15px}
+.dose{font-size:14px;border-top:1px solid var(--line);padding-top:8px;display:flex;flex-direction:column;gap:2px}
+.dose b{font-weight:600}
+.warn{color:var(--muted)}
+.wide{grid-column:1/-1}
+.week-sample{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;font-size:13px;text-align:center}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 4px;display:flex;flex-direction:column;gap:4px}
+.day b{font-family:var(--display);font-size:15px}
+.day.s{border-color:var(--target)}
+.day.s .k{color:var(--target);font-weight:600}
+.day .k{color:var(--accent)}
+.day.r .k{color:var(--muted)}
+@media (max-width:560px){.week-sample{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.phases{display:flex;flex-direction:column;gap:20px}
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.phase-h{padding:14px 16px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;border-bottom:1px solid var(--line)}
+.phase-h p{color:var(--muted);font-size:14px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:640px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:13px}
+tr:last-child td{border-bottom:none}
+td.wk{font-family:var(--display);font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+td.chk{white-space:nowrap}
+td.chk label{display:inline-flex;align-items:center;gap:4px;margin-right:8px;font-size:13px;color:var(--muted);cursor:pointer}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent)}
+input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;font-size:15px;display:flex;flex-direction:column;gap:8px}
+.note ul{margin:0;padding-left:20px}
+.red{border-color:var(--target)}
+.red h3{color:var(--target)}
+.progress{font-size:14px;color:var(--muted)}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+/* figure styles */
+.f{stroke:var(--fig);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.hd{fill:var(--fig)}
+.g{stroke:var(--ghost);stroke-width:5;stroke-dasharray:3 7;stroke-linecap:round;fill:none}
+.gh{fill:none;stroke:var(--ghost);stroke-width:3;stroke-dasharray:3 5}
+.t{fill:var(--target);opacity:.55}
+.a{stroke:var(--accent);stroke-width:3;fill:none;stroke-linecap:round}
+.ah{fill:var(--accent)}
+.prop{fill:var(--line)}
+.floor{stroke:var(--ghost);stroke-width:2}
+.band{stroke:var(--target);stroke-width:3;fill:none}
+.lbl{fill:var(--muted);font:600 11px var(--body)}
+.lbl.big{font-size:16px;fill:var(--ink);font-family:var(--display)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" class="ah"/>
+    </marker>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">ไหล่ห่อ · คอยื่น · หลังส่วนบนค่อม</span>
+  <h1>แผนแก้หลังค่อม 12 สัปดาห์</h1>
+  <p class="lede">ใช้เวลาวันละ 10–20 นาที ยืดส่วนที่ตึงทุกวัน และฝึกกล้ามเนื้อหลังส่วนบนสัปดาห์ละ 3–4 วัน ด้านล่างมีภาพประกอบทุกท่า ตามด้วยตารางว่าแต่ละสัปดาห์ต้องทำอะไร</p>
+  <div class="legend">
+    <span><i class="sw"></i>กล้ามเนื้อที่ทำงานหรือถูกยืด</span>
+    <span><i class="sw arr"></i>ทิศทางการเคลื่อนไหว</span>
+    <span><i class="sw gh"></i>ท่าเริ่มต้น / ท่าที่ไม่ถูกต้อง</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head">
+    <h2>ก่อนเริ่ม: Wall test</h2>
+    <p>ทำวันแรก แล้วทำซ้ำในสัปดาห์ที่ 4, 8 และ 12 เพื่อดูความคืบหน้า</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="ยืนหลังชิดผนัง ส้นเท้า ก้น สะบัก และท้ายทอยแตะผนัง">
+        <rect class="prop" x="40" y="10" width="14" height="140"/>
+        <line class="floor" x1="20" y1="150" x2="200" y2="150"/>
+        <path class="f" d="M64 146 L64 100 M64 100 L66 60 M66 62 L70 46"/>
+        <path class="f" d="M64 100 L72 146"/>
+        <path class="f" d="M66 66 L70 98"/>
+        <circle class="hd" cx="72" cy="34" r="13"/>
+        <circle class="t" cx="56" cy="30" r="5"/><circle class="t" cx="56" cy="64" r="5"/><circle class="t" cx="56" cy="100" r="5"/><circle class="t" cx="56" cy="144" r="5"/>
+        <text class="lbl" x="96" y="34">ท้ายทอย</text>
+        <text class="lbl" x="96" y="68">สะบัก</text>
+        <text class="lbl" x="96" y="104">ก้น</text>
+        <text class="lbl" x="96" y="140">ส้นเท้า</text>
+      </svg>
+      <h3>Wall test <span class="en">เช็กท่าทาง</span></h3>
+      <ol>
+        <li>ยืนหลังชิดผนัง ให้ส้นเท้า ก้น และสะบักแตะผนัง</li>
+        <li>ลองเอาท้ายทอยแตะผนังโดยไม่เงยคาง</li>
+      </ol>
+      <div class="dose"><span><b>แตะได้ แต่ต้องออกแรง:</b> เป็นเรื่องกล้ามเนื้อ ทำตามแผนนี้ได้เลย</span><span class="warn"><b>แตะไม่ได้เลย:</b> ควรให้นักกายภาพตรวจก่อน</span></div>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="ตัวอย่างสัปดาห์ แสดงวันฝึกและวันยืด">
+        <text class="lbl big" x="16" y="34">วัดผลแบบง่าย</text>
+        <text class="lbl" x="16" y="62">1. ถ่ายรูปด้านข้าง ยืนตามปกติ</text>
+        <text class="lbl" x="16" y="84">2. วัดระยะท้ายทอยถึงผนัง (ซม.)</text>
+        <text class="lbl" x="16" y="106">3. ทำซ้ำสัปดาห์ 4, 8, 12</text>
+        <line class="a" x1="16" y1="130" x2="196" y2="130" marker-end="url(#ar)"/>
+        <text class="lbl" x="16" y="150">ระยะลดลง = ดีขึ้น</text>
+      </svg>
+      <h3>จดตัวเลขไว้ <span class="en">ใช้เทียบ</span></h3>
+      <p style="font-size:15px">ท่าทางเปลี่ยนช้าจนมองตัวเองทุกวันไม่ออก การถ่ายรูปด้านข้างในท่ายืนปกติ ไม่เกร็ง แล้วเทียบกันทุก 4 สัปดาห์ จะเห็นความต่างชัดกว่า</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>กลุ่ม A: ยืด <span class="en">ทำทุกวัน · ประมาณ 8 นาที</span></h2>
+    <p>คลายกล้ามเนื้อที่ดึงไหล่ไปข้างหน้า คือกล้ามเนื้ออกและคอด้านบน</p>
+  </div>
+  <div class="grid">
+
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="ท่าดึงคางเข้า มองจากด้านข้าง">
+        <line class="floor" x1="20" y1="150" x2="200" y2="150"/>
+        <circle class="gh" cx="128" cy="50" r="17"/>
+        <path class="g" d="M104 88 L120 64"/>
+        <path class="f" d="M104 150 L104 88 L106 70"/>
+        <path class="f" d="M104 96 L108 140"/>
+        <circle class="hd" cx="108" cy="52" r="17"/>
+        <ellipse class="t" cx="114" cy="74" rx="6" ry="9"/>
+        <line class="a" x1="160" y1="52" x2="132" y2="52" marker-end="url(#ar)"/>
+        <text class="lbl" x="138" y="40">ดึงคางเข้า</text>
+      </svg>
+      <span class="tag">ยืด / จัดท่า</span>
+      <h3>Chin tuck <span class="en">ดึงคางเข้า</span></h3>
+      <ol>
+        <li>นั่งหรือยืนตัวตรง สายตามองตรง</li>
+        <li>เลื่อนศีรษะไปด้านหลังตรงๆ จนเป็นเหนียงสองชั้น ไม่ก้ม ไม่เงย</li>
+        <li>ค้างไว้ แล้วคลาย</li>
+      </ol>
+      <div class="dose"><span><b>10 ครั้ง × 2 รอบ</b> ค้างครั้งละ 5 วินาที</span><span class="warn">ทำระหว่างวันเพิ่มได้ เช่น ทุกครั้งที่ลุกจากโต๊ะ</span></div>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="ยืดอกที่วงกบประตู มองจากด้านข้าง">
+        <rect class="prop" x="62" y="10" width="12" height="140"/>
+        <line class="floor" x1="20" y1="150" x2="200" y2="150"/>
+        <path class="f" d="M108 96 L104 56"/>
+        <path class="f" d="M104 58 L80 60 L80 32"/>
+        <path class="f" d="M108 96 L128 148 M108 96 L94 148"/>
+        <circle class="hd" cx="112" cy="40" r="12"/>
+        <ellipse class="t" cx="112" cy="66" rx="9" ry="10"/>
+        <line class="a" x1="130" y1="78" x2="160" y2="78" marker-end="url(#ar)"/>
+        <text class="lbl" x="134" y="70">ก้าวไปข้างหน้า</text>
+        <text class="lbl" x="80" y="24">ข้อศอกระดับไหล่</text>
+      </svg>
+      <span class="tag">ยืด</span>
+      <h3>Doorway stretch <span class="en">ยืดอกที่วงกบประตู</span></h3>
+      <ol>
+        <li>วางปลายแขนทั้งสองข้างบนวงกบ ข้อศอกสูงระดับไหล่</li>
+        <li>ก้าวเท้าหนึ่งไปข้างหน้า แล้วโน้มตัวผ่านประตูจนรู้สึกตึงที่อก</li>
+        <li>ห่อท้องไว้ ไม่แอ่นหลังล่าง</li>
+      </ol>
+      <div class="dose"><span><b>ค้าง 30 วินาที × 3 รอบ</b></span><span class="warn">ตึงได้ แต่ไม่ควรเจ็บหรือชาที่แขน</span></div>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="นอนหงายบนโฟมโรลเลอร์ใต้หลังส่วนบน แอ่นหลังลง">
+        <line class="floor" x1="10" y1="146" x2="210" y2="146"/>
+        <circle class="prop" cx="96" cy="128" r="17"/>
+        <path class="f" d="M148 138 Q112 112 80 114"/>
+        <path class="f" d="M148 138 L172 106 L188 142"/>
+        <path class="f" d="M90 112 L80 86 L62 104"/>
+        <circle class="hd" cx="58" cy="118" r="12"/>
+        <ellipse class="t" cx="98" cy="108" rx="14" ry="6"/>
+        <path class="a" d="M64 82 Q50 96 52 128" marker-end="url(#ar)"/>
+        <text class="lbl" x="110" y="80">โรลเลอร์ใต้สะบัก</text>
+      </svg>
+      <span class="tag">ยืด</span>
+      <h3>Thoracic extension <span class="en">แอ่นหลังบนโฟมโรลเลอร์</span></h3>
+      <ol>
+        <li>วางโฟมโรลเลอร์หรือผ้าขนหนูม้วนแน่นๆ ขวางใต้หลังส่วนบน ตรงแนวสะบัก</li>
+        <li>มือประคองศีรษะ ให้ก้นวางบนพื้น</li>
+        <li>หายใจออกแล้วค่อยๆ แอ่นหลังลงข้ามโรลเลอร์ จากนั้นกลับขึ้นมา</li>
+      </ol>
+      <div class="dose"><span><b>10 ครั้ง × 2–3 จุด</b> เลื่อนโรลเลอร์ขึ้นลงทีละนิ้ว</span><span class="warn">ห้ามวางโรลเลอร์ใต้หลังส่วนล่าง</span></div>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="ยืดคอด้านข้าง เอียงหูลงหาไหล่">
+        <path class="f" d="M110 150 L110 86 M84 90 L136 90 M84 90 L80 146 M136 90 L140 146"/>
+        <path class="f" d="M110 86 L102 70"/>
+        <circle class="hd" cx="94" cy="56" r="15"/>
+        <path class="f" d="M84 90 L70 70 L82 46"/>
+        <ellipse class="t" cx="124" cy="80" rx="12" ry="6" transform="rotate(25 124 80)"/>
+        <path class="a" d="M120 34 Q100 26 82 32" marker-end="url(#ar)"/>
+        <text class="lbl" x="146" y="80">ตึงตรงนี้</text>
+      </svg>
+      <span class="tag">ยืด</span>
+      <h3>Upper trap stretch <span class="en">ยืดคอด้านข้าง</span></h3>
+      <ol>
+        <li>นั่งตัวตรง มือข้างที่จะยืดจับขอบเก้าอี้ไว้</li>
+        <li>เอียงหูลงหาไหล่อีกข้าง ใช้มืออีกข้างกดศีรษะเบาๆ</li>
+      </ol>
+      <div class="dose"><span><b>ค้าง 30 วินาที × 2 รอบ ต่อข้าง</b></span><span class="warn">อย่าดึงแรง ให้รู้สึกตึงพอดีๆ</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>กลุ่ม B: สร้างกล้ามเนื้อ <span class="en">3–4 วันต่อสัปดาห์ · ประมาณ 12 นาที</span></h2>
+    <p>ฝึกกล้ามเนื้อที่ดึงไหล่กลับ คือหลังส่วนบนระหว่างสะบัก จำนวนครั้งและน้ำหนักของแต่ละสัปดาห์ดูในตารางด้านล่าง</p>
+  </div>
+  <div class="grid">
+
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="Wall angel ยืนหลังชิดผนัง เลื่อนแขนจากรูป W ขึ้นเป็นรูป Y">
+        <rect class="prop" x="40" y="8" width="140" height="146" rx="4"/>
+        <path class="g" d="M98 74 L66 22 M122 74 L154 22"/>
+        <path class="f" d="M110 150 L110 74 M98 76 L122 76"/>
+        <path class="f" d="M98 76 L72 92 L66 54 M122 76 L148 92 L154 54"/>
+        <circle class="hd" cx="110" cy="56" r="13"/>
+        <ellipse class="t" cx="110" cy="92" rx="12" ry="8"/>
+        <line class="a" x1="60" y1="70" x2="56" y2="34" marker-end="url(#ar)"/>
+        <line class="a" x1="160" y1="70" x2="164" y2="34" marker-end="url(#ar)"/>
+        <text class="lbl" x="128" y="140">W → Y</text>
+      </svg>
+      <span class="tag str">สร้างกล้ามเนื้อ</span>
+      <h3>Wall angel <span class="en">เลื่อนแขนบนผนัง</span></h3>
+      <ol>
+        <li>ยืนหลังชิดผนัง ดึงคางเข้า แขนเป็นรูป W ให้ข้อศอกและหลังมือแตะผนัง</li>
+        <li>เลื่อนแขนขึ้นเป็นรูป Y ช้าๆ โดยแขนไม่หลุดจากผนัง</li>
+        <li>ดึงลงกลับเป็น W พร้อมบีบสะบักลง</li>
+      </ol>
+      <div class="dose"><span><b>เริ่มที่ 10 ครั้ง × 2 รอบ</b></span><span class="warn">ถ้าแขนหลุดจากผนัง ให้เลื่อนแค่ช่วงที่ทำได้</span></div>
+    </div>
+
+    <div class="card wide">
+      <svg viewBox="0 0 330 160" role="img" aria-label="นอนคว่ำมองจากด้านบน ยกแขนเป็นรูป Y T และ W">
+        <g>
+          <circle class="hd" cx="55" cy="30" r="10"/>
+          <path class="f" d="M41 50 L69 50 M55 44 L55 100 M55 100 L48 146 M55 100 L62 146"/>
+          <path class="f" d="M41 50 L18 14 M69 50 L92 14"/>
+          <ellipse class="t" cx="55" cy="66" rx="12" ry="12"/>
+          <text class="lbl big" x="49" y="124">Y</text>
+        </g>
+        <g>
+          <circle class="hd" cx="165" cy="30" r="10"/>
+          <path class="f" d="M151 50 L179 50 M165 44 L165 100 M165 100 L158 146 M165 100 L172 146"/>
+          <path class="f" d="M151 50 L112 50 M179 50 L218 50"/>
+          <ellipse class="t" cx="165" cy="60" rx="14" ry="9"/>
+          <text class="lbl big" x="159" y="124">T</text>
+        </g>
+        <g>
+          <circle class="hd" cx="275" cy="30" r="10"/>
+          <path class="f" d="M261 50 L289 50 M275 44 L275 100 M275 100 L268 146 M275 100 L282 146"/>
+          <path class="f" d="M261 50 L240 72 L236 40 M289 50 L310 72 L314 40"/>
+          <ellipse class="t" cx="275" cy="64" rx="12" ry="11"/>
+          <text class="lbl big" x="268" y="124">W</text>
+        </g>
+      </svg>
+      <span class="tag str">สร้างกล้ามเนื้อ</span>
+      <h3>Prone Y-T-W <span class="en">นอนคว่ำยกแขน 3 แบบ (ท่าเดียวกับในคลิป)</span></h3>
+      <ol>
+        <li>นอนคว่ำบนเสื่อ หน้าผากวางบนผ้าขนหนูม้วน คางเก็บเข้าเล็กน้อย</li>
+        <li><b>Y:</b> แขนตรงเฉียงขึ้นเหนือศีรษะ หัวแม่มือชี้ขึ้น · <b>T:</b> กางแขนออกข้างลำตัว · <b>W:</b> งอศอก บีบศอกลงหาสะเอว</li>
+        <li>ยกแขนขึ้นจากพื้น 3–5 ซม. ด้วยการบีบสะบักเข้าหากันและกดลง ค้าง 2 วินาทีแล้ววางลง</li>
+      </ol>
+      <div class="dose"><span><b>เริ่มด้วยมือเปล่า ท่าละ 8 ครั้ง</b> แล้วค่อยเพิ่มเป็นถือกระป๋องหรือขวดน้ำ 0.5–2 กก. ตามตาราง</span><span class="warn">ไม่ต้องยกหัวหรือยกอกสูง ถ้ารู้สึกที่คอหรือหลังล่างมากกว่าระหว่างสะบัก ให้ลดน้ำหนัก</span></div>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="ดึงยางยืดออกด้านข้าง มองจากด้านหน้า">
+        <path class="f" d="M110 150 L110 80 M90 84 L130 84"/>
+        <circle class="hd" cx="110" cy="62" r="13"/>
+        <path class="g" d="M90 84 L100 90 M130 84 L120 90"/>
+        <path class="f" d="M90 84 L40 86 M130 84 L180 86"/>
+        <path class="band" d="M40 86 Q110 96 180 86"/>
+        <circle class="t" cx="90" cy="88" r="7"/><circle class="t" cx="130" cy="88" r="7"/>
+        <line class="a" x1="62" y1="70" x2="34" y2="70" marker-end="url(#ar)"/>
+        <line class="a" x1="158" y1="70" x2="186" y2="70" marker-end="url(#ar)"/>
+        <text class="lbl" x="66" y="126">บีบสะบักเข้าหากัน</text>
+      </svg>
+      <span class="tag str">สร้างกล้ามเนื้อ</span>
+      <h3>Band pull-apart <span class="en">ดึงยางยืดออกด้านข้าง</span></h3>
+      <ol>
+        <li>จับยางยืดด้วยสองมือห่างกันประมาณช่วงไหล่ แขนเหยียดตรงระดับอก</li>
+        <li>ดึงยางออกด้านข้างจนยางแตะอก แล้วบีบสะบักเข้าหากัน</li>
+        <li>ค่อยๆ ผ่อนกลับ ไม่ปล่อยให้ยางดีดกลับ</li>
+      </ol>
+      <div class="dose"><span><b>12–15 ครั้ง × 2–3 รอบ</b></span><span class="warn">ไหล่ไม่ยกขึ้นหาหู</span></div>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="ยืนดึงยางยืดเข้าหาตัว มองจากด้านข้าง">
+        <rect class="prop" x="16" y="20" width="10" height="130"/>
+        <line class="floor" x1="10" y1="150" x2="210" y2="150"/>
+        <path class="f" d="M130 96 L126 52"/>
+        <path class="f" d="M130 96 L116 148 M130 96 L144 148"/>
+        <circle class="hd" cx="120" cy="36" r="12"/>
+        <path class="f" d="M126 56 L150 76 L118 80"/>
+        <path class="band" d="M26 74 L118 80"/>
+        <ellipse class="t" cx="134" cy="64" rx="7" ry="11"/>
+        <line class="a" x1="160" y1="96" x2="180" y2="96" marker-end="url(#ar)"/>
+        <text class="lbl" x="150" y="114">ศอกไปด้านหลัง</text>
+      </svg>
+      <span class="tag str">สร้างกล้ามเนื้อ</span>
+      <h3>Band row <span class="en">ดึงยางเข้าหาตัว</span></h3>
+      <ol>
+        <li>คล้องยางยืดกับเสาหรือลูกบิดประตูที่ล็อกแล้ว ระดับอก</li>
+        <li>ยืนตัวตรง ดึงศอกไปด้านหลังเลียบลำตัว จนมือถึงซี่โครง</li>
+        <li>บีบสะบักค้าง 1–2 วินาที แล้วผ่อนกลับช้าๆ</li>
+      </ol>
+      <div class="dose"><span><b>12 ครั้ง × 3 รอบ</b></span><span class="warn">ถ้ามีดัมเบล ใช้ท่า one-arm dumbbell row แทนได้</span></div>
+    </div>
+
+    <div class="card">
+      <svg viewBox="0 0 220 160" role="img" aria-label="Face pull ดึงยางเข้าหาหน้า ศอกสูง">
+        <rect class="prop" x="16" y="20" width="10" height="130"/>
+        <line class="floor" x1="10" y1="150" x2="210" y2="150"/>
+        <path class="f" d="M134 98 L130 56"/>
+        <path class="f" d="M134 98 L120 148 M134 98 L148 148"/>
+        <circle class="hd" cx="124" cy="40" r="12"/>
+        <path class="f" d="M130 58 L152 50 L118 34"/>
+        <path class="band" d="M26 40 L118 34"/>
+        <ellipse class="t" cx="138" cy="60" rx="7" ry="9"/>
+        <path class="a" d="M162 64 Q172 46 160 30" marker-end="url(#ar)"/>
+        <text class="lbl" x="150" y="122">ศอกสูง หมุนมือขึ้น</text>
+      </svg>
+      <span class="tag str">สร้างกล้ามเนื้อ</span>
+      <h3>Face pull <span class="en">ดึงยางเข้าหาหน้า (เริ่มสัปดาห์ 9)</span></h3>
+      <ol>
+        <li>คล้องยางสูงกว่าระดับศีรษะเล็กน้อย จับด้วยสองมือ คว่ำมือลง</li>
+        <li>ดึงยางเข้าหาหน้าผาก ศอกกางสูงระดับไหล่</li>
+        <li>ตอนท้ายหมุนมือขึ้นเหมือนท่าโชว์กล้ามแขน ค้าง 2 วินาที</li>
+      </ol>
+      <div class="dose"><span><b>15 ครั้ง × 3 รอบ</b></span><span class="warn">ใช้ยางเบาๆ เน้นท่าให้ถูก</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>ตัวอย่าง 1 สัปดาห์</h2>
+    <p>วันฝึกควรมีวันพักคั่น สลับวันได้ตามสะดวก</p>
+  </div>
+  <div class="week-sample">
+    <div class="day s"><b>จ.</b><span class="k">A + B</span><span>ยืด + ฝึก</span></div>
+    <div class="day"><b>อ.</b><span class="k">A</span><span>ยืด</span></div>
+    <div class="day s"><b>พ.</b><span class="k">A + B</span><span>ยืด + ฝึก</span></div>
+    <div class="day"><b>พฤ.</b><span class="k">A</span><span>ยืด</span></div>
+    <div class="day s"><b>ศ.</b><span class="k">A + B</span><span>ยืด + ฝึก</span></div>
+    <div class="day"><b>ส.</b><span class="k">A</span><span>ยืด (+B ช่วงสัปดาห์ 5–12)</span></div>
+    <div class="day r"><b>อา.</b><span class="k">พัก</span><span>เดินเล่น</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>แผนรายสัปดาห์</h2>
+    <p>กลุ่ม A (ยืด) ทำทุกวันตลอด 12 สัปดาห์ ตารางนี้แสดงเฉพาะกลุ่ม B ติ๊กช่องเมื่อฝึกครบแต่ละวัน ระบบจะจำไว้ในเบราว์เซอร์เครื่องนี้</p>
+    <div class="progress"><span id="pg-text">ฝึกแล้ว 0 จาก 44 ครั้ง</span><div class="bar"><i id="pg-bar"></i></div></div>
+  </div>
+  <div class="phases" id="phases"></div>
+</section>
+
+<section>
+  <div class="grid">
+    <div class="note">
+      <h3>กฎเพิ่มความหนัก</h3>
+      <ul>
+        <li>ถ้าทำครบทุกครั้งทุกรอบได้โดยท่ายังถูกต้อง ให้เพิ่มน้ำหนักหรือเปลี่ยนเป็นยางที่แข็งขึ้นในสัปดาห์ถัดไป</li>
+        <li>ถ้ายังทำไม่ครบ ให้ทำสัปดาห์นั้นซ้ำ ไม่ต้องรีบ</li>
+        <li>ถ้าเล่นเวทอยู่แล้ว ให้ทำท่าดึงมากกว่าท่าดันในสัดส่วนประมาณ 2:1</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>ระหว่างวัน</h3>
+      <ul>
+        <li>ยกจอให้ขอบบนอยู่ระดับสายตา และยกมือถือขึ้นมาดูแทนการก้มคอ</li>
+        <li>ลุกทุก 30–45 นาที ทำ chin tuck 5 ครั้ง และบีบสะบัก 5 ครั้ง</li>
+        <li>ไม่ต้องฝืนนั่งตัวแข็งตลอดเวลา การเปลี่ยนท่าบ่อยๆ สำคัญกว่า</li>
+      </ul>
+    </div>
+    <div class="note red">
+      <h3>หยุดและไปพบนักกายภาพ ถ้า</h3>
+      <ul>
+        <li>ชา เสียวแปลบ หรือปวดร้าวลงแขน</li>
+        <li>ปวดมากขึ้นเรื่อยๆ แม้ทำถูกท่าและลดน้ำหนักแล้ว</li>
+        <li>ทำ wall test ไม่ได้เลย หรือหลังไม่ดีขึ้นหลัง 8–12 สัปดาห์</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+const plan = [
+  {name:"ระยะที่ 1 · ปลดล็อกและฝึกท่า", weeks:"สัปดาห์ 1–4", sub:"ฝึก 3 วันต่อสัปดาห์ เน้นท่าถูกต้อง ยังไม่ใช้น้ำหนัก",
+   rows:[
+    [1,"Chin tuck 2×10 (ค้าง 5 วิ)","Wall angel 2×8","Y-T-W มือเปล่า ท่าละ 2×8","—",3],
+    [2,"Chin tuck 2×10 (ค้าง 5 วิ)","Wall angel 2×10","Y-T-W มือเปล่า ท่าละ 2×10","Band pull-apart 2×12",3],
+    [3,"Chin tuck 3×10 (ค้าง 5 วิ)","Wall angel 3×10","Y-T-W มือเปล่า ท่าละ 3×10","Pull-apart 2×15 · Band row 2×12",3],
+    [4,"Chin tuck 3×10 (ค้าง 5 วิ)","Wall angel 3×10","Y-T-W มือเปล่า ท่าละ 3×10 (ค้าง 3 วิ)","Pull-apart 3×15 · Band row 3×12 · ทำ Wall test ครั้งที่ 2",3]
+   ]},
+  {name:"ระยะที่ 2 · สร้างแรง", weeks:"สัปดาห์ 5–8", sub:"ฝึก 3–4 วันต่อสัปดาห์ เริ่มใช้น้ำหนักเบา",
+   rows:[
+    [5,"Chin tuck 2×10 (ค้าง 10 วิ)","Wall angel 3×12","Y-T-W ถือ 0.5 กก. ท่าละ 3×8","Pull-apart 3×15 · Band row 3×12",4],
+    [6,"Chin tuck 2×10 (ค้าง 10 วิ)","Wall angel 3×12","Y-T-W ถือ 0.5 กก. ท่าละ 3×10","Pull-apart 3×15 · Band row 3×15",4],
+    [7,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×12 (ช้า 3 วิ ขึ้น/ลง)","Y-T-W ถือ 1 กก. ท่าละ 3×8","Pull-apart 3×15 · Band row ยางแข็งขึ้น 3×12",4],
+    [8,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×12 (ช้า 3 วิ)","Y-T-W ถือ 1 กก. ท่าละ 3×10","Pull-apart 3×15 · Band row 3×15 · Wall test ครั้งที่ 3",4]
+   ]},
+  {name:"ระยะที่ 3 · ทำให้ติดตัว", weeks:"สัปดาห์ 9–12", sub:"ฝึก 3–4 วันต่อสัปดาห์ เพิ่ม face pull และน้ำหนัก",
+   rows:[
+    [9,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×15","Y-T-W ถือ 1–1.5 กก. ท่าละ 3×10","Band row 3×12 · Face pull 3×15",4],
+    [10,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×15","Y-T-W ถือ 1.5 กก. ท่าละ 3×10 (ค้าง 3 วิ)","Band row 3×15 · Face pull 3×15",4],
+    [11,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×15 (ช้า)","Y-T-W ถือ 1.5–2 กก. ท่าละ 3×12","Band/Dumbbell row 4×12 · Face pull 3×15",4],
+    [12,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×15 (ช้า)","Y-T-W ถือ 2 กก. ท่าละ 3×12","Row 4×12 · Face pull 3×15 · Wall test + ถ่ายรูปเทียบ",4]
+   ]}
+];
+// sessions: wk1-4 = 3, wk5-12 = 4 -> 12 + 32 = 44
+const total = plan.flatMap(p=>p.rows).reduce((s,r)=>s+r[5],0);
+let state = {};
+try { state = JSON.parse(localStorage.getItem("posture12") || "{}") || {}; } catch(e){ state = {}; }
+const save = () => { try { localStorage.setItem("posture12", JSON.stringify(state)); } catch(e){} };
+const host = document.getElementById("phases");
+plan.forEach(p=>{
+  const el = document.createElement("div"); el.className="phase";
+  let h = `<div class="phase-h"><h3>${p.name}</h3><span class="en">${p.weeks}</span><p>${p.sub}</p></div><div class="tbl"><table><thead><tr><th>สัปดาห์</th><th>Chin tuck</th><th>Wall angel</th><th>Prone Y-T-W</th><th>ท่าเสริม</th><th>ฝึกแล้ว</th></tr></thead><tbody>`;
+  p.rows.forEach(r=>{
+    let boxes = "";
+    for(let i=1;i<=r[5];i++){ const id=`w${r[0]}s${i}`; boxes += `<label for="${id}"><input type="checkbox" id="${id}" ${state[id]?"checked":""}>${i}</label>`; }
+    h += `<tr><td class="wk">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td class="chk">${boxes}</td></tr>`;
+  });
+  el.innerHTML = h + "</tbody></table></div>"; host.appendChild(el);
+});
+function upd(){
+  const n = Object.values(state).filter(Boolean).length;
+  document.getElementById("pg-text").textContent = `ฝึกแล้ว ${n} จาก ${total} ครั้ง`;
+  document.getElementById("pg-bar").style.width = (n/total*100)+"%";
+}
+host.addEventListener("change", e=>{ if(e.target.type==="checkbox"){ state[e.target.id]=e.target.checked; save(); upd(); }});
+upd();
+</script>
+</body>
+</html>
