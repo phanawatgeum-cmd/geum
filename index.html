@@ -104,6 +104,15 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .mat{fill:var(--surface);stroke:var(--line)}
 .tx{fill:var(--muted);font:600 10px var(--body)}
 .band2{stroke:#ec6a3a;stroke-width:3.2;stroke-linecap:round}
+.sub-h{font-size:17px;color:var(--muted);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.cardfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:8px;margin-top:auto}
+.yt{color:var(--accent);font-weight:600;font-size:14px;text-decoration:none}
+.yt:hover,.yt:focus-visible{text-decoration:underline}
+.donebox{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--muted);cursor:pointer}
+.when{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.when div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;font-size:14px}
+.when b{font-family:var(--display);font-size:15px}
+.when span{color:var(--muted)}
 /* figure styles */
 .f{stroke:var(--fig);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .hd{fill:var(--fig)}
@@ -135,7 +144,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 <header>
   <span class="eyebrow">ไหล่ห่อ · คอยื่น · หลังส่วนบนค่อม</span>
   <h1>แผนแก้หลังค่อม 12 สัปดาห์</h1>
-  <p class="lede">ใช้เวลาวันละ 10–20 นาที ยืดส่วนที่ตึงทุกวัน และฝึกกล้ามเนื้อหลังส่วนบนสัปดาห์ละ 3–4 วัน ด้านล่างมีภาพประกอบทุกท่า ตามด้วยตารางว่าแต่ละสัปดาห์ต้องทำอะไร</p>
+  <p class="lede">ทำชุดประจำวัน 10 ท่าจากคลิปของนักกายภาพทุกวัน และฝึกสร้างกล้ามเนื้อหลังส่วนบนสัปดาห์ละ 3–4 วัน ทุกท่ามีภาพเคลื่อนไหวและลิงก์ไปยังคลิป ตามด้วยตารางว่าแต่ละสัปดาห์ต้องทำอะไร</p>
   <div class="legend">
     <span><i class="sw"></i>กล้ามเนื้อที่ทำงานหรือถูกยืด</span>
     <span><i class="sw arr"></i>ทิศทางการเคลื่อนไหว</span>
@@ -173,86 +182,119 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   </div>
 </section>
 
-<section>
+<section id="daily">
   <div class="sec-head">
-    <h2>กลุ่ม A: ยืด <span class="en">ทำทุกวัน · ประมาณ 8 นาที</span></h2>
-    <p>คลายกล้ามเนื้อที่ดึงไหล่ไปข้างหน้า คือกล้ามเนื้ออกและคอด้านบน</p>
+    <h2>ชุดประจำวัน: 10 ท่าจากคลิป <span class="en">ทำทุกวัน</span></h2>
+    <p>ท่าจากคลิป <a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0" target="_blank" rel="noopener">สอนแก้ไหล่ห่อ คอยื่นด้วยตัวเองง่ายๆ</a> ของช่อง บัณฑิตกายภาพXหมอยามาตอบ จำนวนครั้งตามที่คลิปแนะนำ ไม่ต้องทำรวดเดียว แบ่งเซ็ตทำทั้งวันได้ กดลิงก์ใต้แต่ละท่าเพื่อเปิดคลิปตรงนาทีนั้น</p>
+    <div class="progress"><span id="dl-text">วันนี้ทำแล้ว 0 จาก 10 ท่า</span><div class="bar"><i id="dl-bar"></i></div></div>
   </div>
+  <div class="when">
+    <div><b>ตื่นนอน</b><span>ท่า 8, 9, 10 บนเตียง</span></div>
+    <div><b>ระหว่างวัน</b><span>ท่า 1–5 ที่ผนังหรือประตู แบ่งเซ็ตทำ</span></div>
+    <div><b>ทุกชั่วโมงที่นั่งทำงาน</b><span>ท่า 6 และ 7</span></div>
+  </div>
+  <h3 class="sub-h">ท่ายืน <span class="en">ใช้ผนังหรือกรอบประตู</span></h3>
   <div class="grid">
-
     <div class="card">
-      <div class="anim" data-ex="chin"></div>
-      <span class="tag">ยืด / จัดท่า</span>
-      <h3>Chin tuck <span class="en">ดึงคางเข้า</span></h3>
-      <ol>
-        <li>นั่งหรือยืนตัวตรง สายตามองตรง</li>
-        <li>เลื่อนศีรษะไปด้านหลังตรงๆ จนเป็นเหนียงสองชั้น ไม่ก้ม ไม่เงย</li>
-        <li>ค้างไว้ แล้วคลาย</li>
-      </ol>
-      <div class="dose"><span><b>10 ครั้ง × 2 รอบ</b> ค้างครั้งละ 5 วินาที</span><span class="warn">ทำระหว่างวันเพิ่มได้ เช่น ทุกครั้งที่ลุกจากโต๊ะ</span></div>
+      <div class="anim" data-ex="c1"></div>
+      <span class="tag">ท่า 1 · ยืน</span>
+      <h3>ยืดอกที่กรอบประตู ศอก 90°</h3>
+      <ol><li>ยืนหันหน้าเข้ามุมห้องหรือกรอบประตู</li><li>วางปลายแขนแนบผนัง ศอกงอ 90° สูงระดับไหล่</li><li>โน้มตัวไปข้างหน้าจนรู้สึกตึงที่อก</li></ol>
+      <div class="dose"><span><b>ค้าง 1–10 วิ · 5 ครั้ง = 1 เซ็ต · 10 เซ็ต/วัน</b></span><span class="warn">ห่อท้องไว้ ไม่แอ่นหลังล่าง</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=231s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (3:51)</a><label class="donebox" for="d-c1"><input type="checkbox" id="d-c1" data-daily="c1">วันนี้ทำแล้ว</label></div>
     </div>
-
     <div class="card">
-      <div class="anim" data-ex="door"></div>
-      <span class="tag">ยืด</span>
-      <h3>Doorway stretch <span class="en">ยืดอกที่วงกบประตู</span></h3>
-      <ol>
-        <li>วางปลายแขนทั้งสองข้างบนวงกบ ข้อศอกสูงระดับไหล่</li>
-        <li>ก้าวเท้าหนึ่งไปข้างหน้า แล้วโน้มตัวผ่านประตูจนรู้สึกตึงที่อก</li>
-        <li>ห่อท้องไว้ ไม่แอ่นหลังล่าง</li>
-      </ol>
-      <div class="dose"><span><b>ค้าง 30 วินาที × 3 รอบ</b></span><span class="warn">ตึงได้ แต่ไม่ควรเจ็บหรือชาที่แขน</span></div>
+      <div class="anim" data-ex="c2"></div>
+      <span class="tag">ท่า 2 · ยืน</span>
+      <h3>ยืดอกที่กรอบประตู ยกศอกสูง</h3>
+      <ol><li>ท่าเดียวกับท่า 1 แต่ยกศอกสูงกว่าไหล่ แขนทำมุมราว 45° ขึ้นไป</li><li>โน้มตัวไปข้างหน้า จะตึงที่อกส่วนล่าง</li></ol>
+      <div class="dose"><span><b>ค้าง 1–10 วิ · 10 ครั้ง = 1 เซ็ต · 5 เซ็ต/วัน</b></span><span class="warn">ถ้าชาหรือเสียวที่แขน ให้ลดศอกลง</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=270s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (4:30)</a><label class="donebox" for="d-c2"><input type="checkbox" id="d-c2" data-daily="c2">วันนี้ทำแล้ว</label></div>
     </div>
-
     <div class="card">
-      <div class="anim" data-ex="roll"></div>
-      <span class="tag">ยืด</span>
-      <h3>Thoracic extension <span class="en">แอ่นหลังบนโฟมโรลเลอร์</span></h3>
-      <ol>
-        <li>วางโฟมโรลเลอร์หรือผ้าขนหนูม้วนแน่นๆ ขวางใต้หลังส่วนบน ตรงแนวสะบัก</li>
-        <li>มือประคองศีรษะ ให้ก้นวางบนพื้น</li>
-        <li>หายใจออกแล้วค่อยๆ แอ่นหลังลงข้ามโรลเลอร์ จากนั้นกลับขึ้นมา</li>
-      </ol>
-      <div class="dose"><span><b>10 ครั้ง × 2–3 จุด</b> เลื่อนโรลเลอร์ขึ้นลงทีละนิ้ว</span><span class="warn">ห้ามวางโรลเลอร์ใต้หลังส่วนล่าง</span></div>
+      <div class="anim" data-ex="c3"></div>
+      <span class="tag">ท่า 3 · ยืน</span>
+      <h3>วาดแขนขึ้นบนผนัง (หันหน้าเข้าผนัง)</h3>
+      <ol><li>ยืนหันหน้าเข้าผนัง ตั้งศอก ให้ปลายแขนแนบผนัง</li><li>เลื่อนมือขึ้นไปบนผนังจนแขนเหยียดสุด</li><li>เลื่อนกลับลงช้าๆ</li></ol>
+      <div class="dose"><span><b>20–30 ครั้ง = 1 เซ็ต · 2–3 เซ็ต/วัน</b></span><span class="warn">ไหล่ไม่ยกขึ้นหาหู</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=300s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (5:00)</a><label class="donebox" for="d-c3"><input type="checkbox" id="d-c3" data-daily="c3">วันนี้ทำแล้ว</label></div>
     </div>
-
     <div class="card">
-      <div class="anim" data-ex="neck"></div>
-      <span class="tag">ยืด</span>
-      <h3>Upper trap stretch <span class="en">ยืดคอด้านข้าง</span></h3>
-      <ol>
-        <li>นั่งตัวตรง มือข้างที่จะยืดจับขอบเก้าอี้ไว้</li>
-        <li>เอียงหูลงหาไหล่อีกข้าง ใช้มืออีกข้างกดศีรษะเบาๆ</li>
-      </ol>
-      <div class="dose"><span><b>ค้าง 30 วินาที × 2 รอบ ต่อข้าง</b></span><span class="warn">อย่าดึงแรง ให้รู้สึกตึงพอดีๆ</span></div>
+      <div class="anim" data-ex="c4"></div>
+      <span class="tag">ท่า 4 · ยืน</span>
+      <h3>Wall angel (หลังชิดผนัง)</h3>
+      <ol><li>ส้นเท้า ก้น และหลังชิดผนัง</li><li>ตั้งศอก 90° ให้แขนแนบผนัง</li><li>วาดแขนขึ้นจนสุดแล้วลง โดยแขนไม่หลุดจากผนัง</li></ol>
+      <div class="dose"><span><b>10 ครั้ง = 1 เซ็ต · 5 เซ็ต/วัน</b></span><span class="warn">ถ้าแขนหลุดผนัง ทำแค่ช่วงที่ทำได้</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=349s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (5:49)</a><label class="donebox" for="d-c4"><input type="checkbox" id="d-c4" data-daily="c4">วันนี้ทำแล้ว</label></div>
     </div>
-
+    <div class="card">
+      <div class="anim" data-ex="c5"></div>
+      <span class="tag">ท่า 5 · ยืน</span>
+      <h3>ก้มตัวยืดกับผนัง (แขนรูปตัว V)</h3>
+      <ol><li>ยืนห่างผนัง 1 ช่วงแขน</li><li>วางมือบนผนังสูงเป็นตัว V</li><li>ก้มตัวลง ดันอกลงหาพื้น ศีรษะอยู่ระหว่างแขน</li></ol>
+      <div class="dose"><span><b>ค้าง 1–3 วิ · 10 ครั้ง = 1 เซ็ต · 5 เซ็ต/วัน</b></span><span class="warn">งอเข่าเล็กน้อยได้ ถ้าตึงหลังขา</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=398s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (6:38)</a><label class="donebox" for="d-c5"><input type="checkbox" id="d-c5" data-daily="c5">วันนี้ทำแล้ว</label></div>
+    </div>
+  </div>
+  <h3 class="sub-h">ท่านั่ง <span class="en">ทำที่โต๊ะทำงานได้</span></h3>
+  <div class="grid">
+    <div class="card">
+      <div class="anim" data-ex="c6"></div>
+      <span class="tag">ท่า 6 · นั่ง</span>
+      <h3>นั่งห่อไหล่ แล้วยืดตัวตรง</h3>
+      <ol><li>นั่งปล่อยตัวห่อไหล่</li><li>ยืดตัวตรง เก็บคางเข้า ยกอกขึ้น</li><li>ค้างไว้แล้วผ่อน</li></ol>
+      <div class="dose"><span><b>ค้าง 1–3 วิ · 10 ครั้ง = 1 เซ็ต · 3 เซ็ต/วัน</b></span><span class="warn">ทำได้ทุกครั้งที่รู้ตัวว่านั่งหลังค่อม</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=442s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (7:22)</a><label class="donebox" for="d-c6"><input type="checkbox" id="d-c6" data-daily="c6">วันนี้ทำแล้ว</label></div>
+    </div>
+    <div class="card">
+      <div class="anim" data-ex="c7"></div>
+      <span class="tag">ท่า 7 · นั่ง</span>
+      <h3>ผ้าขนหนูลงหลังศีรษะ</h3>
+      <ol><li>นั่งบนเก้าอี้ จับผ้าขนหนูกว้างกว่าไหล่</li><li>ยกแขนขึ้นจนสุด</li><li>งอศอกลงให้ผ้าไปอยู่หลังศีรษะ ค้างไว้ แล้วเหยียดขึ้น</li></ol>
+      <div class="dose"><span><b>ค้าง 1–3 วิ · 10 ครั้ง = 1 เซ็ต · 3 เซ็ต/วัน</b></span><span class="warn">ถ้าเจ็บไหล่ ลดช่วงลง ไม่ต้องลงสุด</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=492s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (8:12)</a><label class="donebox" for="d-c7"><input type="checkbox" id="d-c7" data-daily="c7">วันนี้ทำแล้ว</label></div>
+    </div>
+  </div>
+  <h3 class="sub-h">ท่านอน <span class="en">ทำบนเตียงตอนเช้าหรือก่อนนอน</span></h3>
+  <div class="grid">
+    <div class="card">
+      <div class="anim" data-ex="c8"></div>
+      <span class="tag">ท่า 8 · นอน</span>
+      <h3>นอนหงาย เลื่อนแขนขึ้นลง</h3>
+      <ol><li>นอนหงายบนเตียง แขนวางข้างตัว</li><li>เลื่อนแขนไปกับเตียงขึ้นเหนือศีรษะ ขาขึ้นคว่ำมือ</li><li>เลื่อนกลับลง ขาลงหงายมือ</li></ol>
+      <div class="dose"><span><b>30 ครั้ง/วัน</b></span><span class="warn">แขนเลื่อนไปกับเตียง ไม่ต้องยกลอย</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=557s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (9:17)</a><label class="donebox" for="d-c8"><input type="checkbox" id="d-c8" data-daily="c8">วันนี้ทำแล้ว</label></div>
+    </div>
+    <div class="card">
+      <div class="anim" data-ex="c9"></div>
+      <span class="tag">ท่า 9 · นอน</span>
+      <h3>นอนคว่ำ หมุนแขนเหมือนว่ายน้ำ</h3>
+      <ol><li>นอนคว่ำ หน้าผากวางบนผ้าขนหนูหรือหมอน</li><li>ยกแขนลอยจากเตียง แขนอยู่ข้างลำตัว</li><li>หมุนแขนออกข้างไปจนเหยียดไปข้างหน้า แล้วหมุนกลับ</li></ol>
+      <div class="dose"><span><b>10 ครั้ง = 1 เซ็ต · 5 เซ็ต/วัน</b></span><span class="warn">ไม่เงยหน้า ให้คอยาวตรง</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=589s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (9:49)</a><label class="donebox" for="d-c9"><input type="checkbox" id="d-c9" data-daily="c9">วันนี้ทำแล้ว</label></div>
+    </div>
+    <div class="card">
+      <div class="anim" data-ex="c10"></div>
+      <span class="tag">ท่า 10 · นอน</span>
+      <h3>ยกสะโพก ไหล่ติดเตียง</h3>
+      <ol><li>นอนหงาย ชันเข่าขึ้น</li><li>หงายมือวางข้างลำตัว</li><li>ยกสะโพกขึ้น ไหล่ยังติดเตียง ค้างไว้ แล้ววางลง</li></ol>
+      <div class="dose"><span><b>ค้าง 1–10 วิ · 10 ครั้ง = 1 เซ็ต · 1–2 เซ็ต/วัน</b></span><span class="warn">บีบก้น ไม่แอ่นหลังล่าง</span></div>
+      <div class="cardfoot"><a class="yt" href="https://www.youtube.com/watch?v=vm-ViDIYFa0&t=647s" target="_blank" rel="noopener">ดูท่านี้ในคลิป (10:47)</a><label class="donebox" for="d-c10"><input type="checkbox" id="d-c10" data-daily="c10">วันนี้ทำแล้ว</label></div>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="sec-head">
-    <h2>กลุ่ม B: สร้างกล้ามเนื้อ <span class="en">3–4 วันต่อสัปดาห์ · ประมาณ 12 นาที</span></h2>
-    <p>ฝึกกล้ามเนื้อที่ดึงไหล่กลับ คือหลังส่วนบนระหว่างสะบัก จำนวนครั้งและน้ำหนักของแต่ละสัปดาห์ดูในตารางด้านล่าง</p>
+    <h2>สร้างกล้ามเนื้อ <span class="en">3–4 วันต่อสัปดาห์ · ประมาณ 12 นาที</span></h2>
+    <p>ชุดประจำวันเน้นยืดและขยับไหล่ ส่วนชุดนี้เพิ่มแรงให้กล้ามเนื้อหลังส่วนบน เพื่อดึงไหล่ไว้ได้ในระยะยาว จำนวนครั้งและน้ำหนักของแต่ละสัปดาห์ดูในตารางด้านล่าง</p>
   </div>
   <div class="grid">
-
-    <div class="card">
-      <div class="anim" data-ex="angel"></div>
-      <span class="tag str">สร้างกล้ามเนื้อ</span>
-      <h3>Wall angel <span class="en">เลื่อนแขนบนผนัง</span></h3>
-      <ol>
-        <li>ยืนหลังชิดผนัง ดึงคางเข้า แขนเป็นรูป W ให้ข้อศอกและหลังมือแตะผนัง</li>
-        <li>เลื่อนแขนขึ้นเป็นรูป Y ช้าๆ โดยแขนไม่หลุดจากผนัง</li>
-        <li>ดึงลงกลับเป็น W พร้อมบีบสะบักลง</li>
-      </ol>
-      <div class="dose"><span><b>เริ่มที่ 10 ครั้ง × 2 รอบ</b></span><span class="warn">ถ้าแขนหลุดจากผนัง ให้เลื่อนแค่ช่วงที่ทำได้</span></div>
-    </div>
 
     <div class="card wide">
       <div class="anim" data-ex="ytw"></div>
       <span class="tag str">สร้างกล้ามเนื้อ</span>
-      <h3>Prone Y-T-W <span class="en">นอนคว่ำยกแขน 3 แบบ (ท่าเดียวกับในคลิป)</span></h3>
+      <h3>Prone Y-T-W <span class="en">นอนคว่ำยกแขน 3 แบบ (ต่อยอดจากท่า 9)</span></h3>
       <ol>
         <li>นอนคว่ำบนเสื่อ หน้าผากวางบนผ้าขนหนูม้วน คางเก็บเข้าเล็กน้อย</li>
         <li><b>Y:</b> แขนตรงเฉียงขึ้นเหนือศีรษะ หัวแม่มือชี้ขึ้น · <b>T:</b> กางแขนออกข้างลำตัว · <b>W:</b> งอศอก บีบศอกลงหาสะเอว</li>
@@ -302,24 +344,69 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 <section>
   <div class="sec-head">
+    <h2>ท่าเสริม <span class="en">ไม่บังคับ ทำเมื่อมีเวลา</span></h2>
+    <p>ใช้เมื่อรู้สึกตึงคอหรือหลังเป็นพิเศษ หรืออยากทำเพิ่มจากชุดประจำวัน</p>
+  </div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="anim" data-ex="chin"></div>
+      <span class="tag">ยืด / จัดท่า</span>
+      <h3>Chin tuck <span class="en">ดึงคางเข้า</span></h3>
+      <ol>
+        <li>นั่งหรือยืนตัวตรง สายตามองตรง</li>
+        <li>เลื่อนศีรษะไปด้านหลังตรงๆ จนเป็นเหนียงสองชั้น ไม่ก้ม ไม่เงย</li>
+        <li>ค้างไว้ แล้วคลาย</li>
+      </ol>
+      <div class="dose"><span><b>10 ครั้ง × 2 รอบ</b> ค้างครั้งละ 5 วินาที</span><span class="warn">ทำระหว่างวันเพิ่มได้ เช่น ทุกครั้งที่ลุกจากโต๊ะ</span></div>
+    </div>
+
+    <div class="card">
+      <div class="anim" data-ex="roll"></div>
+      <span class="tag">ยืด</span>
+      <h3>Thoracic extension <span class="en">แอ่นหลังบนโฟมโรลเลอร์</span></h3>
+      <ol>
+        <li>วางโฟมโรลเลอร์หรือผ้าขนหนูม้วนแน่นๆ ขวางใต้หลังส่วนบน ตรงแนวสะบัก</li>
+        <li>มือประคองศีรษะ ให้ก้นวางบนพื้น</li>
+        <li>หายใจออกแล้วค่อยๆ แอ่นหลังลงข้ามโรลเลอร์ จากนั้นกลับขึ้นมา</li>
+      </ol>
+      <div class="dose"><span><b>10 ครั้ง × 2–3 จุด</b> เลื่อนโรลเลอร์ขึ้นลงทีละนิ้ว</span><span class="warn">ห้ามวางโรลเลอร์ใต้หลังส่วนล่าง</span></div>
+    </div>
+
+    <div class="card">
+      <div class="anim" data-ex="neck"></div>
+      <span class="tag">ยืด</span>
+      <h3>Upper trap stretch <span class="en">ยืดคอด้านข้าง</span></h3>
+      <ol>
+        <li>นั่งตัวตรง มือข้างที่จะยืดจับขอบเก้าอี้ไว้</li>
+        <li>เอียงหูลงหาไหล่อีกข้าง ใช้มืออีกข้างกดศีรษะเบาๆ</li>
+      </ol>
+      <div class="dose"><span><b>ค้าง 30 วินาที × 2 รอบ ต่อข้าง</b></span><span class="warn">อย่าดึงแรง ให้รู้สึกตึงพอดีๆ</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
     <h2>ตัวอย่าง 1 สัปดาห์</h2>
     <p>วันฝึกควรมีวันพักคั่น สลับวันได้ตามสะดวก</p>
   </div>
   <div class="week-sample">
-    <div class="day s"><b>จ.</b><span class="k">A + B</span><span>ยืด + ฝึก</span></div>
-    <div class="day"><b>อ.</b><span class="k">A</span><span>ยืด</span></div>
-    <div class="day s"><b>พ.</b><span class="k">A + B</span><span>ยืด + ฝึก</span></div>
-    <div class="day"><b>พฤ.</b><span class="k">A</span><span>ยืด</span></div>
-    <div class="day s"><b>ศ.</b><span class="k">A + B</span><span>ยืด + ฝึก</span></div>
-    <div class="day"><b>ส.</b><span class="k">A</span><span>ยืด (+B ช่วงสัปดาห์ 5–12)</span></div>
-    <div class="day r"><b>อา.</b><span class="k">พัก</span><span>เดินเล่น</span></div>
+    <div class="day s"><b>จ.</b><span class="k">ประจำวัน + ฝึก</span></div>
+    <div class="day"><b>อ.</b><span class="k">ประจำวัน</span></div>
+    <div class="day s"><b>พ.</b><span class="k">ประจำวัน + ฝึก</span></div>
+    <div class="day"><b>พฤ.</b><span class="k">ประจำวัน</span></div>
+    <div class="day s"><b>ศ.</b><span class="k">ประจำวัน + ฝึก</span></div>
+    <div class="day"><b>ส.</b><span class="k">ประจำวัน</span><span>(+ฝึก สัปดาห์ 5–12)</span></div>
+    <div class="day r"><b>อา.</b><span class="k">ประจำวัน</span><span>เบาๆ</span></div>
   </div>
 </section>
 
 <section>
   <div class="sec-head">
     <h2>แผนรายสัปดาห์</h2>
-    <p>กลุ่ม A (ยืด) ทำทุกวันตลอด 12 สัปดาห์ ตารางนี้แสดงเฉพาะกลุ่ม B ติ๊กช่องเมื่อฝึกครบแต่ละวัน ระบบจะจำไว้ในเบราว์เซอร์เครื่องนี้</p>
+    <p>ชุดประจำวันทำทุกวัน ตารางบอกว่าแต่ละสัปดาห์ปรับอะไร และฝึกสร้างกล้ามเนื้อเท่าไร ติ๊กช่องเมื่อฝึกสร้างกล้ามเนื้อครบแต่ละวัน ระบบจะจำไว้ในเบราว์เซอร์เครื่องนี้</p>
     <div class="progress"><span id="pg-text">ฝึกแล้ว 0 จาก 44 ครั้ง</span><div class="bar"><i id="pg-bar"></i></div></div>
   </div>
   <div class="phases" id="phases"></div>
@@ -332,6 +419,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       <ul>
         <li>ถ้าทำครบทุกครั้งทุกรอบได้โดยท่ายังถูกต้อง ให้เพิ่มน้ำหนักหรือเปลี่ยนเป็นยางที่แข็งขึ้นในสัปดาห์ถัดไป</li>
         <li>ถ้ายังทำไม่ครบ ให้ทำสัปดาห์นั้นซ้ำ ไม่ต้องรีบ</li>
+        <li>ท่ายืดในคลิปค้างแค่ 1–10 วิ ตั้งแต่สัปดาห์ 5 ให้ค่อยๆ ค้างท่า 1, 2, 5 นานขึ้นจนถึง 20–30 วิ จะยืดกล้ามอกได้ดีขึ้น</li>
         <li>ถ้าเล่นเวทอยู่แล้ว ให้ทำท่าดึงมากกว่าท่าดันในสัดส่วนประมาณ 2:1</li>
       </ul>
     </div>
@@ -339,7 +427,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       <h3>ระหว่างวัน</h3>
       <ul>
         <li>ยกจอให้ขอบบนอยู่ระดับสายตา และยกมือถือขึ้นมาดูแทนการก้มคอ</li>
-        <li>ลุกทุก 30–45 นาที ทำ chin tuck 5 ครั้ง และบีบสะบัก 5 ครั้ง</li>
+        <li>ลุกทุก 30–45 นาที หรือทำท่า 6 ของชุดประจำวันที่โต๊ะ</li>
         <li>ไม่ต้องฝืนนั่งตัวแข็งตลอดเวลา การเปลี่ยนท่าบ่อยๆ สำคัญกว่า</li>
       </ul>
     </div>
@@ -358,41 +446,41 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 <script>
 const plan = [
-  {name:"ระยะที่ 1 · ปลดล็อกและฝึกท่า", weeks:"สัปดาห์ 1–4", sub:"ฝึก 3 วันต่อสัปดาห์ เน้นท่าถูกต้อง ยังไม่ใช้น้ำหนัก",
+  {name:"ระยะที่ 1 · เริ่มชุดประจำวันและฝึกท่า", weeks:"สัปดาห์ 1–4", sub:"ฝึกสร้างกล้ามเนื้อ 3 วันต่อสัปดาห์ ยังไม่ใช้น้ำหนัก",
    rows:[
-    [1,"Chin tuck 2×10 (ค้าง 5 วิ)","Wall angel 2×8","Y-T-W มือเปล่า ท่าละ 2×8","—",3],
-    [2,"Chin tuck 2×10 (ค้าง 5 วิ)","Wall angel 2×10","Y-T-W มือเปล่า ท่าละ 2×10","Band pull-apart 2×12",3],
-    [3,"Chin tuck 3×10 (ค้าง 5 วิ)","Wall angel 3×10","Y-T-W มือเปล่า ท่าละ 3×10","Pull-apart 2×15 · Band row 2×12",3],
-    [4,"Chin tuck 3×10 (ค้าง 5 วิ)","Wall angel 3×10","Y-T-W มือเปล่า ท่าละ 3×10 (ค้าง 3 วิ)","Pull-apart 3×15 · Band row 3×12 · ทำ Wall test ครั้งที่ 2",3]
+    [1,"ทำครึ่งหนึ่งของจำนวนเซ็ตในคลิป ฝึกให้ท่าถูก","มือเปล่า ท่าละ 2×8","—",3],
+    [2,"ครึ่งหนึ่งของจำนวนเซ็ต","มือเปล่า ท่าละ 2×10","Pull-apart 2×12",3],
+    [3,"ครบตามคลิป","มือเปล่า ท่าละ 3×10","Pull-apart 2×15 · Row 2×12",3],
+    [4,"ครบตามคลิป · Wall test ครั้งที่ 2","มือเปล่า ท่าละ 3×10 ค้าง 3 วิ","Pull-apart 3×15 · Row 3×12",3]
    ]},
-  {name:"ระยะที่ 2 · สร้างแรง", weeks:"สัปดาห์ 5–8", sub:"ฝึก 3–4 วันต่อสัปดาห์ เริ่มใช้น้ำหนักเบา",
+  {name:"ระยะที่ 2 · สร้างแรง", weeks:"สัปดาห์ 5–8", sub:"ฝึกสร้างกล้ามเนื้อ 3–4 วันต่อสัปดาห์ เริ่มใช้น้ำหนักเบา",
    rows:[
-    [5,"Chin tuck 2×10 (ค้าง 10 วิ)","Wall angel 3×12","Y-T-W ถือ 0.5 กก. ท่าละ 3×8","Pull-apart 3×15 · Band row 3×12",4],
-    [6,"Chin tuck 2×10 (ค้าง 10 วิ)","Wall angel 3×12","Y-T-W ถือ 0.5 กก. ท่าละ 3×10","Pull-apart 3×15 · Band row 3×15",4],
-    [7,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×12 (ช้า 3 วิ ขึ้น/ลง)","Y-T-W ถือ 1 กก. ท่าละ 3×8","Pull-apart 3×15 · Band row ยางแข็งขึ้น 3×12",4],
-    [8,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×12 (ช้า 3 วิ)","Y-T-W ถือ 1 กก. ท่าละ 3×10","Pull-apart 3×15 · Band row 3×15 · Wall test ครั้งที่ 3",4]
+    [5,"ครบตามคลิป · ท่า 1, 2, 5 ค้าง 10–15 วิ","0.5 กก. ท่าละ 3×8","Pull-apart 3×15 · Row 3×12",4],
+    [6,"ท่า 1, 2, 5 ค้าง 10–15 วิ","0.5 กก. ท่าละ 3×10","Pull-apart 3×15 · Row 3×15",4],
+    [7,"ท่า 1, 2, 5 ค้าง 15–20 วิ","1 กก. ท่าละ 3×8","Pull-apart 3×15 · Row ยางแข็งขึ้น 3×12",4],
+    [8,"ท่า 1, 2, 5 ค้าง 15–20 วิ · Wall test ครั้งที่ 3","1 กก. ท่าละ 3×10","Pull-apart 3×15 · Row 3×15",4]
    ]},
-  {name:"ระยะที่ 3 · ทำให้ติดตัว", weeks:"สัปดาห์ 9–12", sub:"ฝึก 3–4 วันต่อสัปดาห์ เพิ่ม face pull และน้ำหนัก",
+  {name:"ระยะที่ 3 · ทำให้ติดตัว", weeks:"สัปดาห์ 9–12", sub:"ฝึกสร้างกล้ามเนื้อ 3–4 วันต่อสัปดาห์ เพิ่ม face pull และน้ำหนัก",
    rows:[
-    [9,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×15","Y-T-W ถือ 1–1.5 กก. ท่าละ 3×10","Band row 3×12 · Face pull 3×15",4],
-    [10,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×15","Y-T-W ถือ 1.5 กก. ท่าละ 3×10 (ค้าง 3 วิ)","Band row 3×15 · Face pull 3×15",4],
-    [11,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×15 (ช้า)","Y-T-W ถือ 1.5–2 กก. ท่าละ 3×12","Band/Dumbbell row 4×12 · Face pull 3×15",4],
-    [12,"Chin tuck 3×10 (ค้าง 10 วิ)","Wall angel 3×15 (ช้า)","Y-T-W ถือ 2 กก. ท่าละ 3×12","Row 4×12 · Face pull 3×15 · Wall test + ถ่ายรูปเทียบ",4]
+    [9,"ท่า 1, 2, 5 ค้าง 20–30 วิ ลดเหลือ 3–5 เซ็ต/วัน","1–1.5 กก. ท่าละ 3×10","Row 3×12 · Face pull 3×15",4],
+    [10,"ท่า 1, 2, 5 ค้าง 20–30 วิ","1.5 กก. ท่าละ 3×10 ค้าง 3 วิ","Row 3×15 · Face pull 3×15",4],
+    [11,"ท่า 1, 2, 5 ค้าง 20–30 วิ","1.5–2 กก. ท่าละ 3×12","Row 4×12 · Face pull 3×15",4],
+    [12,"ครบตามคลิป · Wall test + ถ่ายรูปเทียบ","2 กก. ท่าละ 3×12","Row 4×12 · Face pull 3×15",4]
    ]}
 ];
 // sessions: wk1-4 = 3, wk5-12 = 4 -> 12 + 32 = 44
-const total = plan.flatMap(p=>p.rows).reduce((s,r)=>s+r[5],0);
+const total = plan.flatMap(p=>p.rows).reduce((s,r)=>s+r[4],0);
 let state = {};
 try { state = JSON.parse(localStorage.getItem("posture12") || "{}") || {}; } catch(e){ state = {}; }
 const save = () => { try { localStorage.setItem("posture12", JSON.stringify(state)); } catch(e){} };
 const host = document.getElementById("phases");
 plan.forEach(p=>{
   const el = document.createElement("div"); el.className="phase";
-  let h = `<div class="phase-h"><h3>${p.name}</h3><span class="en">${p.weeks}</span><p>${p.sub}</p></div><div class="tbl"><table><thead><tr><th>สัปดาห์</th><th>Chin tuck</th><th>Wall angel</th><th>Prone Y-T-W</th><th>ท่าเสริม</th><th>ฝึกแล้ว</th></tr></thead><tbody>`;
+  let h = `<div class="phase-h"><h3>${p.name}</h3><span class="en">${p.weeks}</span><p>${p.sub}</p></div><div class="tbl"><table><thead><tr><th>สัปดาห์</th><th>ชุดประจำวัน (10 ท่าจากคลิป)</th><th>Prone Y-T-W</th><th>ท่ายางยืด</th><th>ฝึกสร้างกล้ามเนื้อแล้ว</th></tr></thead><tbody>`;
   p.rows.forEach(r=>{
     let boxes = "";
-    for(let i=1;i<=r[5];i++){ const id=`w${r[0]}s${i}`; boxes += `<label for="${id}"><input type="checkbox" id="${id}" ${state[id]?"checked":""}>${i}</label>`; }
-    h += `<tr><td class="wk">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td class="chk">${boxes}</td></tr>`;
+    for(let i=1;i<=r[4];i++){ const id=`w${r[0]}s${i}`; boxes += `<label for="${id}"><input type="checkbox" id="${id}" ${state[id]?"checked":""}>${i}</label>`; }
+    h += `<tr><td class="wk">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td class="chk">${boxes}</td></tr>`;
   });
   el.innerHTML = h + "</tbody></table></div>"; host.appendChild(el);
 });
@@ -403,6 +491,16 @@ function upd(){
 }
 host.addEventListener("change", e=>{ if(e.target.type==="checkbox"){ state[e.target.id]=e.target.checked; save(); upd(); }});
 upd();
+
+// daily checklist for the 10 clip exercises (resets each day, this browser only)
+(function(){
+  const today=new Date().toLocaleDateString('sv');let d={date:today,done:{}};
+  try{const v=JSON.parse(localStorage.getItem('posture-daily')||'null');if(v&&v.date===today)d=v;}catch(e){}
+  const boxes=[...document.querySelectorAll('input[data-daily]')];
+  const show=()=>{const n=boxes.filter(b=>b.checked).length;document.getElementById('dl-text').textContent=`วันนี้ทำแล้ว ${n} จาก ${boxes.length} ท่า`;document.getElementById('dl-bar').style.width=(n/boxes.length*100)+'%';};
+  boxes.forEach(b=>{b.checked=!!d.done[b.dataset.daily];b.addEventListener('change',()=>{d.done[b.dataset.daily]=b.checked;try{localStorage.setItem('posture-daily',JSON.stringify(d))}catch(e){}show();});});
+  show();
+})();
 </script>
 <script>
 (function(){
@@ -488,6 +586,14 @@ function headFront(c,r,tilt){
     `<path d="M0 2 Q-0.6 4.6 0.8 5" fill="none" stroke="${C.skinS}" stroke-width="0.9" stroke-linecap="round"/>`+
     `<path d="M-2.2 7.2 Q0 8.4 2.2 7.2" fill="none" stroke="${C.mouth}" stroke-width="0.9" stroke-linecap="round"/></g>`;
 }
+function headBack(c,r,tilt){
+  const k=r/11,T=`translate(${f1(c[0])} ${f1(c[1])}) rotate(${f1(tilt)}) scale(${k})`;
+  return `<g transform="${T}">`+
+    `<ellipse cx="-9.6" cy="1.6" rx="2" ry="3" fill="${C.skinS}"/><ellipse cx="9.6" cy="1.6" rx="2" ry="3" fill="${C.skinS}"/>`+
+    `<path d="M-4.6 6 Q0 13 4.6 6 L4.4 11.5 Q0 13 -4.4 11.5Z" fill="${C.skinS}"/>`+
+    `<path d="M-9.4 1 Q-10.4 -11.6 0 -11.8 Q10.4 -11.6 9.4 1 Q9 6.5 5 9.4 Q0 10.8 -5 9.4 Q-9 6.5 -9.4 1Z" fill="${C.hair}"/>`+
+    `<path d="M-6 -7 Q0 -11 6 -7 M-4 -2 Q0 -4 4 -2" fill="none" stroke="${C.hairH}" stroke-width="1.1" stroke-linecap="round"/></g>`;
+}
 function bez(h,m,n,t){const u=1-t;return [u*u*h[0]+2*u*t*m[0]+t*t*n[0],u*u*h[1]+2*u*t*m[1]+t*t*n[1]]}
 function bezT(h,m,n,t){return unit([2*(1-t)*(m[0]-h[0])+2*t*(n[0]-m[0]),2*(1-t)*(m[1]-h[1])+2*t*(n[1]-m[1])])}
 const pw=(arr,t)=>{for(let i=1;i<arr.length;i++){if(t<=arr[i][0]){const [t0,v0]=arr[i-1],[t1,v1]=arr[i];return v0+(v1-v0)*sm((t-t0)/(t1-t0))}}return arr[arr.length-1][1]};
@@ -517,12 +623,12 @@ function body(p,s){
     o+=shaded(L,R,[6.6*s,6.2*s,6.6*s],C.skin,C.skinS,.5);
     const sLo=mix(L,n,.32),sLi=mix(L,n,.62),sRi=mix(R,n,.62),sRo=mix(R,n,.32),w=11*s;
     const aL=[L[0]+3*s,L[1]+12*s],aR=[R[0]-3*s,R[1]+12*s];
-    const d=`M${f1(sLo[0])} ${f1(sLo[1]-2*s)}L${f1(sLi[0])} ${f1(sLi[1]-2*s)}Q${f1(n[0])} ${f1(n[1]+16*s)} ${f1(sRi[0])} ${f1(sRi[1]-2*s)}L${f1(sRo[0])} ${f1(sRo[1]-2*s)}Q${f1(R[0]-1*s)} ${f1(R[1]+4*s)} ${f1(aR[0])} ${f1(aR[1])}Q${f1(h[0]+w-1*s)} ${f1((aR[1]+h[1])/2)} ${f1(h[0]+w+1*s)} ${f1(h[1])}L${f1(h[0]-w-1*s)} ${f1(h[1])}Q${f1(h[0]-w+1*s)} ${f1((aL[1]+h[1])/2)} ${f1(aL[0])} ${f1(aL[1])}Q${f1(L[0]+1*s)} ${f1(L[1]+4*s)} ${f1(sLo[0])} ${f1(sLo[1]-2*s)}Z`;
+    const d=`M${f1(sLo[0])} ${f1(sLo[1]-2*s)}L${f1(sLi[0])} ${f1(sLi[1]-2*s)}Q${f1(n[0])} ${f1(n[1]+(p.face==='B'?4:16)*s)} ${f1(sRi[0])} ${f1(sRi[1]-2*s)}L${f1(sRo[0])} ${f1(sRo[1]-2*s)}Q${f1(R[0]-1*s)} ${f1(R[1]+4*s)} ${f1(aR[0])} ${f1(aR[1])}Q${f1(h[0]+w-1*s)} ${f1((aR[1]+h[1])/2)} ${f1(h[0]+w+1*s)} ${f1(h[1])}L${f1(h[0]-w-1*s)} ${f1(h[1])}Q${f1(h[0]-w+1*s)} ${f1((aL[1]+h[1])/2)} ${f1(aL[0])} ${f1(aL[1])}Q${f1(L[0]+1*s)} ${f1(L[1]+4*s)} ${f1(sLo[0])} ${f1(sLo[1]-2*s)}Z`;
     o+=path(d,C.shirt);
     o+=`<path d="M${f1(aR[0])} ${f1(aR[1])}Q${f1(h[0]+w-1*s)} ${f1((aR[1]+h[1])/2)} ${f1(h[0]+w+1*s)} ${f1(h[1])}L${f1(h[0]+w-4*s)} ${f1(h[1])}Q${f1(h[0]+w-5*s)} ${f1((aR[1]+h[1])/2)} ${f1(aR[0]-3*s)} ${f1(aR[1]+3*s)}Z" fill="${C.shirtS}"/>`;
     o+=`<rect x="${f1(h[0]-w-1.5*s)}" y="${f1(h[1]-2*s)}" width="${f1(2*w+3*s)}" height="${f1(9*s)}" rx="${f1(2.5*s)}" fill="${C.shorts}"/><rect x="${f1(h[0]-w-1.5*s)}" y="${f1(h[1]-2*s)}" width="${f1(2*w+3*s)}" height="${f1(2*s)}" fill="${C.shortsS}"/>`;
     const tilt=Math.atan2(hd[0]-n[0],n[1]-hd[1])*180/Math.PI;
-    o+=headFront(hd,11*s,tilt);
+    o+=p.face==='B'?headBack(hd,11*s,tilt):headFront(hd,11*s,tilt);
     o+=glow(p.glow);
     (p.fl||[]).filter(l=>!isLeg(l)).forEach(l=>o+=arm(l,s,false));
     return o;
@@ -725,6 +831,89 @@ X.pull.poses.b.arm=[[98,108],[72,98],[44,88]];
 X.pull.draw=p=>`<g transform="translate(120 88) scale(1.4) translate(-120 -88)">${pullTop(p)}</g>`;
 // face pull: hands finish beside the forehead
 Object.assign(X.face.poses.b,{bl:[[[134,112],[140,140],[144,166]],[[134,68],[152,58],[121,38]]],fl:[[[134,112],[130,140],[126,166]],[[132,68],[150,60],[119,40]]]});
+})();
+// --- 10 exercises from the clip ---
+(function(){
+const X=EX;
+const TW='#27a79d',TWS='#1d8178';
+const bedTop=`<rect x="0" y="0" width="240" height="180" fill="var(--floor)"/><rect x="58" y="2" width="124" height="176" rx="10" fill="#bcd9ea"/><rect x="62" y="6" width="116" height="168" rx="8" fill="#d3e8f4"/>`;
+const chairSide=`<rect x="114" y="128" width="40" height="7" rx="2" fill="#9c7b5c"/><rect x="148" y="84" width="6" height="51" rx="2" fill="#8a6b4e"/><rect x="118" y="135" width="4" height="33" fill="#8a6b4e"/><rect x="146" y="135" width="4" height="33" fill="#8a6b4e"/>`;
+const seatFront=`<rect x="70" y="150" width="100" height="30" rx="6" fill="var(--wall-edge)"/>`;
+// 1: corner/doorway stretch, elbows 90
+X.c1=Object.assign({},X.door,{seq:[['a',1.2,.9,'หันหน้าเข้าประตู ปลายแขนแนบวงกบ ศอก 90° ระดับไหล่'],['b',1.6,2.4,'โน้มตัวไปข้างหน้า ตึงที่อก ค้าง 1–10 วิ']],rest:1});
+// 2: same, elbows high
+const d2a=Object.assign({},X.door.poses.a,{bl:[X.door.poses.a.bl[0],[[96,68],[79,48],[80,20]]],fl:[X.door.poses.a.fl[0],[[98,68],[81,50],[82,22]]],glow:[106,86,8,8,0]});
+const d2b=Object.assign({},X.door.poses.b,{bl:[X.door.poses.b.bl[0],[[114,70],[82,46],[81,18]]],fl:[X.door.poses.b.fl[0],[[116,70],[84,48],[83,20]]],glow:[124,88,9,9,1]});
+X.c2={s:1,poses:{a:d2a,b:d2b},back:X.door.back,seq:[['a',1.2,.9,'ยกศอกสูงกว่าไหล่ ปลายแขนแนบวงกบ'],['b',1.6,2.4,'โน้มตัวไปข้างหน้า ตึงที่อกส่วนล่าง ค้าง 1–10 วิ']],rest:1};
+// 3: wall slide facing the wall (seen from behind)
+const bb={torso:[[120,112],[120,88],[120,62]],head:[120,42],face:'B',sh:[[102,66],[138,66]],noShadow:true};
+const lg=[[[114,110],[112,138],[110,163]],[[126,110],[128,138],[130,163]]];
+X.c3={s:1,poses:{
+  a:Object.assign({},bb,{fl:[...lg,[[102,66],[88,88],[86,54]],[[138,66],[152,88],[154,54]]],glow:[120,80,14,9,.2]}),
+  b:Object.assign({},bb,{fl:[...lg,[[102,66],[95,36],[91,6]],[[138,66],[145,36],[149,6]]],glow:[120,80,14,9,1]})},
+  back:X.angel.back,
+  seq:[['a',1.8,.6,'หันหน้าเข้าผนัง ตั้งศอก ปลายแขนแนบผนัง'],['b',1.8,.5,'เลื่อนมือขึ้นบนผนังจนแขนเหยียดสุด']],rest:1};
+// 4: wall angel (back to the wall)
+X.c4=Object.assign({},X.angel,{seq:[['w',1.8,.7,'ส้นเท้า หลัง ชิดผนัง ศอก 90° แขนแนบผนัง'],['y',1.8,.5,'วาดแขนขึ้นจนสุด แขนไม่หลุดผนัง']],rest:0});
+// 5: wall V lean
+X.c5={s:1,poses:{
+  a:{torso:[[124,108],[123,86],[120,64]],head:[114,48],face:[-1,0],
+     bl:[[[124,108],[128,138],[130,166]],[[120,68],[90,50],[58,34]]],fl:[[[124,108],[120,138],[118,166]],[[118,68],[88,48],[56,32]]],glow:[108,82,10,6,0]},
+  b:{torso:[[136,106],[112,96],[90,88]],head:[74,94],face:[-1,.45],
+     bl:[[[136,106],[132,138],[130,166]],[[94,88],[76,60],[58,34]]],fl:[[[136,106],[124,138],[118,166]],[[92,88],[74,62],[56,32]]],glow:[106,84,12,7,1]}},
+  back:p=>G.floor(168)+G.wallSide(54),
+  seq:[['a',1.4,.7,'ยืนห่างผนัง 1 ช่วงแขน วางมือสูงเป็นตัว V'],['b',1.6,1.6,'ก้มตัวลง ดันอกลงหาพื้น ค้าง 1–3 วิ']],rest:1};
+// 6: seated slump -> tall
+X.c6={s:1,poses:{
+  slump:{torso:[[136,128],[148,100],[120,84]],head:[106,78],face:[-1,.3],
+     bl:[[[136,128],[106,128],[106,166]],[[124,88],[118,108],[108,122]]],fl:[[[136,128],[102,130],[100,166]],[[122,88],[116,110],[104,124]]],glow:[144,96,6,10,0]},
+  tall:{torso:[[134,128],[134,104],[131,78]],head:[127,60],face:[-1,0],
+     bl:[[[134,128],[106,128],[106,166]],[[133,84],[132,108],[116,122]]],fl:[[[134,128],[102,130],[100,166]],[[131,84],[130,108],[112,124]]],glow:[142,92,6,11,1]}},
+  back:p=>G.floor(168)+chairSide,
+  seq:[['slump',1.3,1,'นั่งห่อไหล่ (ท่าที่มักนั่งโดยไม่รู้ตัว)'],['tall',1.3,1.8,'ยืดตัวตรง เก็บคาง ยกอกขึ้น ค้าง 1–3 วิ']],rest:1};
+// 7: towel overhead -> behind the head
+const nb={torso:[[120,190],[120,140],[120,90]],face:'F',sh:[[96,92],[144,92]],head:[120,66],noShadow:true};
+X.c7={s:1.2,poses:{
+  up:Object.assign({},nb,{fl:[[[96,92],[90,60],[86,28]],[[144,92],[150,60],[154,28]]],glow:[120,108,16,7,.2]}),
+  down:Object.assign({},nb,{fl:[[[96,92],[72,90],[96,58]],[[144,92],[168,90],[144,58]]],glow:[120,108,16,7,1]})},
+  back:p=>{const a=p.fl[0][2],b=p.fl[1][2];const d=(q,dx)=>f1(q[0]+dx)+' '+f1(q[1]+9);
+    return seatFront+`<polyline points="${d(a,-6)} ${f1(a[0]-2)} ${f1(a[1])} ${f1(b[0]+2)} ${f1(b[1])} ${d(b,6)}" fill="none" stroke="${TWS}" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/><polyline points="${d(a,-6)} ${f1(a[0]-2)} ${f1(a[1]-1)} ${f1(b[0]+2)} ${f1(b[1]-1)} ${d(b,6)}" fill="none" stroke="${TW}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>`},
+  seq:[['up',1.4,.8,'จับผ้าขนหนู ยกแขนขึ้นจนสุด'],['down',1.6,1.8,'งอศอกลง ผ้าไปอยู่หลังศีรษะ ค้าง 1–3 วิ']],rest:1};
+// 8: lying on the back, arms slide up and down along the bed (seen from above)
+const sb={torso:[[120,120],[120,96],[120,70]],head:[120,48],face:'F',sh:[[102,74],[138,74]],noShadow:true,
+  fl0:[[[114,118],[112,146],[110,170]],[[126,118],[128,146],[130,170]]]};
+const sp=(L,R)=>Object.assign({},sb,{fl:[...sb.fl0,L,R]});
+X.c8={s:1,poses:{
+  dn:sp([[102,74],[98,98],[96,122]],[[138,74],[142,98],[144,122]]),
+  t:sp([[102,74],[78,78],[54,82]],[[138,74],[162,78],[186,82]]),
+  up:sp([[102,74],[86,50],[74,26]],[[138,74],[154,50],[166,26]])},
+  back:p=>bedTop+`<ellipse cx="120" cy="40" rx="30" ry="14" fill="#f4f9fc"/><text class="tx" x="6" y="166">มองจาก</text><text class="tx" x="6" y="177">ด้านบน</text>`,
+  seq:[['dn',1,.6,'นอนหงาย แขนข้างตัว หงายมือ'],['t',1,0,'เลื่อนแขนขึ้นไปบนเตียง คว่ำมือ'],['up',1,.7,'เลื่อนขึ้นจนสุด'],['t',1,0,'เลื่อนแขนลง หงายมือ'],['dn',1,.2,'เลื่อนแขนลง หงายมือ']],rest:2};
+// 9: prone swimmer (seen from above)
+X.c9={s:1,poses:{
+  s0:{arm:[[102,54],[101,80],[101,106]],lift:0},s1:{arm:[[102,54],[101,80],[101,106]],lift:1},
+  t1:{arm:[[102,54],[80,55],[56,56]],lift:1},u1:{arm:[[102,54],[97,30],[94,6]],lift:1}},
+  draw:proneTop,
+  back:p=>X.ytw.back(p)+`<rect x="104" y="12" width="32" height="11" rx="5" fill="${TWS}"/><rect x="105" y="12" width="30" height="9" rx="4" fill="${TW}"/>`,
+  seq:[['s0',.6,.5,'นอนคว่ำ หน้าผากวางบนผ้า แขนข้างตัว'],['s1',.8,.5,'ยกแขนลอยจากเตียง'],['t1',1.1,0,'หมุนแขนออกข้าง'],['u1',1.1,.7,'เหยียดไปข้างหน้าเหนือศีรษะ'],['t1',1.1,0,'หมุนแขนกลับ'],['s1',1.1,.3,'กลับมาข้างลำตัว'],['s0',.7,.3,'วางแขนลง']],rest:3};
+// 10: bridge, palms up, shoulders stay down
+const arms10={bl:[[[134,156],[160,134],[168,166]],[[90,154],[110,159],[130,161]]],fl:[[[134,156],[156,134],[164,166]],[[92,156],[112,161],[132,163]]]};
+X.c10={s:1,poses:{
+  dn:{torso:[[134,156],[110,157],[88,155]],head:[72,152],face:[0,-1],noShadow:true,bl:arms10.bl,fl:arms10.fl,glow:[136,146,9,8,0]},
+  up:{torso:[[132,128],[108,146],[88,155]],head:[72,152],face:[0,-1],noShadow:true,
+      bl:[[[132,128],[160,134],[168,166]],arms10.bl[1]],fl:[[[132,128],[156,134],[164,166]],arms10.fl[1]],glow:[132,132,9,8,1]}},
+  back:p=>G.floor(168)+`<rect x="30" y="165" width="180" height="5" rx="2.5" fill="#bcd9ea"/>`,
+  seq:[['dn',1.2,.7,'นอนหงาย ชันเข่า หงายมือข้างลำตัว'],['up',1.4,2,'ยกสะโพกขึ้น ไหล่ติดเตียง ค้าง 1–10 วิ']],rest:1};
+})();
+// --- review fixes for clip set ---
+(function(){
+const X=EX;
+X.c5.poses.b={torso:[[138,102],[114,98],[94,93]],head:[78,90],face:[-1,.9],
+  bl:[[[138,102],[133,136],[130,166]],[[96,92],[76,62],[58,34]]],fl:[[[138,102],[125,136],[118,166]],[[94,93],[74,63],[56,32]]],glow:[108,92,12,7,1]};
+X.c7.poses.down.fl=[[[96,92],[72,92],[98,70]],[[144,92],[168,92],[142,70]]];
+X.c9.poses.s0.arm=X.c9.poses.s1.arm=[[102,54],[95,80],[92,106]];
+X.c10.draw=p=>`<g transform="translate(118 168) scale(1.4) translate(-118 -168)">${body(p,1)}</g>`;
+X.c10.back=p=>G.floor(168)+`<rect x="10" y="165" width="220" height="5" rx="2.5" fill="#bcd9ea"/>`;
 })();
 
 function at(ex,t){

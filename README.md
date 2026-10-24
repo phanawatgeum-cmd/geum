@@ -6,8 +6,9 @@
 
 ## เนื้อหา
 - Wall test สำหรับเช็กท่าทาง
-- กลุ่ม A ยืด (ทุกวัน): Chin tuck, Doorway stretch, Thoracic extension, Upper trap stretch
-- กลุ่ม B สร้างกล้ามเนื้อ (3–4 วัน/สัปดาห์): Wall angel, Prone Y-T-W, Band pull-apart, Band row, Face pull
+- ชุดประจำวัน 10 ท่าจากคลิป [สอนแก้ไหล่ห่อ คอยื่นด้วยตัวเองง่ายๆ](https://www.youtube.com/watch?v=vm-ViDIYFa0) (บัณฑิตกายภาพXหมอยามาตอบ) พร้อมลิงก์ไปยังนาทีของแต่ละท่า และช่องติ๊กรายวัน
+- สร้างกล้ามเนื้อ (3–4 วัน/สัปดาห์): Prone Y-T-W, Band pull-apart, Band row, Face pull
+- ท่าเสริม: Chin tuck, Thoracic extension, Upper trap stretch
 - แผน 3 ระยะ: ปลดล็อก (สัปดาห์ 1–4) → สร้างแรง (5–8) → ทำให้ติดตัว (9–12)
 - ช่องติ๊กบันทึกการฝึก (เก็บในเบราว์เซอร์)
 
